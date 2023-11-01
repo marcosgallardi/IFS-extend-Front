@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #0c3e62; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    white,
+    #1961ac
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    white,
+    #1961ac
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.position {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+}
+
+.positionLogin {
+  position: absolute;
+  left: 38%;
+  top: 30%;
+}
+
+.positionFooter{
+    position: absolute;
+    right: 3%;
+    bottom: 1%;
+}
+
+.textoFooter{
+    color: aliceblue;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 16px;
+}
