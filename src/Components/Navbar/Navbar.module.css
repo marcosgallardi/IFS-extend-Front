@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: whitesmoke;
+}
+
+nav ul a {
+  color: #0c3e62;
+  font-size: 19px;
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.positionList {
+  margin-left: 60px;
+}
+
+.loginButtom {
+  color: #0c3e62;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 25px;
+}
+
+.logoNavbarWidth {
+  width: 50px;
+}
+
+.logoNavbarHeigth {
+  height: 50px;
+}

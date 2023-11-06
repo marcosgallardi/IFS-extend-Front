@@ -1,6 +1,6 @@
-import { Login } from "../Components/Login/Login";
-import { LogoSanmartin } from "../Components/LogoSanmartin/LogoSanmartin";
-import styles from "../Pages/LoginPages.module.css";
+import { Login } from "../../Components/Login/Login";
+import { LogoSanmartin } from "../../Components/LogoSanmartin/LogoSanmartin";
+import styles from "../loginPages/LoginPages.module.css";
 
 export const LoginPages = () => {
   return (
