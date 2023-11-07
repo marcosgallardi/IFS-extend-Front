@@ -6,7 +6,7 @@ export const LoginPages = () => {
   return (
     <div className={styles.container}>
       <div className={styles.position}>
-        <LogoSanmartin />
+      <LogoSanmartin width={styles.logoLoginWidth} heigth={styles.logoLoginHeigth}/>
       </div>
       <div className={styles.positionLogin}>
         <Login />

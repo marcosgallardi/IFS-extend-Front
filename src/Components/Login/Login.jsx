@@ -5,7 +5,11 @@ import styles from "../Login/Login.module.css";
 import login1 from "../../assets/login1.png";
 
 export const Login = () => {
-  const [inputLogin, setInputLogin] = useState({ username: "", password: "" });
+  const [inputLogin, setInputLogin] = useState({
+    username: "",
+    password: "",
+    base: "",
+  });
   const dispatch = useDispatch();
 
   const onClickLogin = ({ target }) => {
@@ -17,11 +21,11 @@ export const Login = () => {
   };
   console.log(inputLogin);
 
-  const {username,password} = inputLogin
+  const { username, password, base } = inputLogin;
 
   const onSubmitLogin = (e) => {
     e.preventDefault();
-    dispatch(loginAction(username,password));
+    dispatch(loginAction(username, password, base));
   };
 
   return (
@@ -45,6 +49,15 @@ export const Login = () => {
           name="password"
           onChange={onClickLogin}
         />
+
+        <select name="base">
+          <option disabled selected>
+            Base
+          </option>
+
+          <option value="IFSARG1P">IFS Produccion</option>
+          <option value="IFSARG1T">IFS Test</option>
+        </select>
 
         <button className={styles.bottonLogin}>Entrar</button>
       </form>

@@ -1,10 +1,13 @@
-import { Navbar } from "../../Components/Navbar/Navbar"
+import { Navbar } from "../../Components/Navbar/Navbar";
+import { Novedades } from "../../Components/NovedadesLanding/Novedades";
 
 
 export const LandingPages = () => {
   return (
     <div>
-        <Navbar/>
+      <Navbar />
+
+      <Novedades />
     </div>
-  )
-}
+  );
+};

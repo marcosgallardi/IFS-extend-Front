@@ -12,7 +12,7 @@ export const Navbar = () => {
         <Lista name={"Internos"} path={"Internos"} position={styles.positionList}/>
         <Lista name={"Novedades"} path={"Novedades"} position={styles.positionList}/>
       </ul>
-        <Link className={styles.loginButtom}>Login</Link>
+        <Link className={styles.loginButtom}to={"login"}>Login</Link>
     </nav>
   );
 };
