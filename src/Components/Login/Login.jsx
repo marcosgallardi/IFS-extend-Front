@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../Redux/actions/loginAction";
 import styles from "../Login/Login.module.css";
 import login1 from "../../assets/login1.png";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -11,6 +12,7 @@ export const Login = () => {
     base: "",
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onClickLogin = ({ target }) => {
     let { value, name } = target;
@@ -19,13 +21,18 @@ export const Login = () => {
       [name]: value,
     });
   };
-  console.log(inputLogin);
 
   const { username, password, base } = inputLogin;
 
-  const onSubmitLogin = (e) => {
+  const onSubmitLogin = async (e) => {
     e.preventDefault();
-    dispatch(loginAction(username, password, base));
+    const loginSuccess = await dispatch(loginAction(username, password, base));
+    console.log(loginSuccess === true, "condicion!!");
+    if (loginSuccess === true) {
+      navigate("/home");
+    } else {
+      alert("password incorrecta");
+    }
   };
 
   return (
