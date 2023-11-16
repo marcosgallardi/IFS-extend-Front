@@ -1,7 +1,10 @@
+import { Sidebar } from "../../Components/home/Sidebar"
 
 
 export const HomePages = () => {
   return (
-    <div>homePages</div>
+    <div>
+      <Sidebar/>
+    </div>
   )
 }
