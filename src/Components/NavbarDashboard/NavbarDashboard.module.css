@@ -1,0 +1,58 @@
+.navbar {
+  width: 80%;
+  height: 70px;
+  background-color: #0c3e62;
+  position: fixed;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  transform-origin: top right;
+  transform: skew(40deg);
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.icon {
+  width: auto;
+  height: 30px;
+  color: white;
+  transform: skew(-40deg);
+}
+
+
+.buttonLogout {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  margin-left: 20px;
+  background-color: rgb(203, 17, 17);
+  transform: skew(-40deg);
+  margin: 25px;
+  padding: 20px;
+}
+.buttonLogout:hover {
+  background-color: aliceblue;
+}
+.iconLogout {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar a {
+  color: white;
+}
+
+.navbar a:hover {
+  color: lightblue;
+}

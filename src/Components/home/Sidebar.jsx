@@ -5,8 +5,19 @@ import tuerca from "../../assets/Tuerca.png";
 
 export const Sidebar = () => {
   const [isCollapse, setIsCollapse] = useState(false);
+  const [toggleAdm, setToggleAdm] = useState(false);
+  const [toggleRRHH, setToggleRRHH] = useState(false);
+
   const handleToggleMenu = () => {
     setIsCollapse(!isCollapse);
+  };
+
+  const handleToggleAdm = () => {
+    setToggleAdm(!toggleAdm);
+  };
+
+  const handleToggleRRHH = () => {
+    setToggleRRHH(!toggleRRHH);
   };
   return (
     <div>
@@ -35,10 +46,26 @@ export const Sidebar = () => {
           </button>
           {isCollapse ? <p className={style.text}>Abrir barra</p> : null}
           <div className={style.filteredContent}>
-            <div className={style.filters}>Recursos Humanos</div>
+            <div className={style.filters} onClick={handleToggleRRHH}>
+              Recursos Humanos
+            </div>
+            {toggleRRHH ? (
+              <>
+                <div className={style.filters}>Modificar Novedades</div>
+                <div className={style.filters}>Modificar Internos</div>
+                <div className={style.filters}>Modificar Menu</div>
+                <div className={style.filters}>Eliminar Novedad</div>
+
+              </>
+            ) : null}
             <div>
               <div className={style.filtersContainer}>
-                <div className={style.filters}>Administracion</div>
+                <div className={style.filters} onClick={handleToggleAdm}>
+                  Administracion
+                </div>
+                {toggleAdm ? (
+                  <div className={style.filters}>Factura para orden</div>
+                ) : null}
               </div>
             </div>
           </div>
