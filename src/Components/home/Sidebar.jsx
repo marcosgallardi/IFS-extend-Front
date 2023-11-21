@@ -46,27 +46,27 @@ export const Sidebar = () => {
           </button>
           {isCollapse ? <p className={style.text}>Abrir barra</p> : null}
           <div className={style.filteredContent}>
+            <hr className={style.divider}/>
             <div className={style.filters} onClick={handleToggleRRHH}>
               Recursos Humanos
             </div>
             {toggleRRHH ? (
               <>
-                <div className={style.filters}>Modificar Novedades</div>
-                <div className={style.filters}>Modificar Internos</div>
-                <div className={style.filters}>Modificar Menu</div>
-                <div className={style.filters}>Eliminar Novedad</div>
-
+                <div className={style.subFilters}>Modificar Novedades</div>
+                <div className={style.subFilters}>Modificar Internos</div>
+                <div className={style.subFilters}>Modificar Menu</div>
+                <div className={style.subFilters}>Eliminar Novedad</div>
               </>
             ) : null}
-            <div>
-              <div className={style.filtersContainer}>
-                <div className={style.filters} onClick={handleToggleAdm}>
-                  Administracion
-                </div>
-                {toggleAdm ? (
-                  <div className={style.filters}>Factura para orden</div>
-                ) : null}
+            <hr className={style.divider}/>
+            <div className={style.filtersContainer}>
+              <div className={style.filters} onClick={handleToggleAdm}>
+                Administracion
               </div>
+              {toggleAdm ? (
+                <div className={style.subFilters}>Factura para orden</div>
+              ) : null}
+              <hr className={style.divider}/>
             </div>
           </div>
         </div>

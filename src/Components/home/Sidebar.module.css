@@ -152,9 +152,21 @@
   transition: 0.5s ease-in-out;
 }
 
-.bookingButton:hover,
-.bookingButton:focus {
-  background-color: #fbc32c;
-  border: 1px solid transparent; /* Para quitar el contorno predeterminado cuando el botón está enfocado */
-  color: #313045;
+.subFilters {
+  font-size: 12px;
+  font-weight:400;
+  color: #ffffffa0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+.divider {
+  margin: 20px 0;
+  height: 2px;
+  border: 1px solid white;
+  text-align: center;
 }
