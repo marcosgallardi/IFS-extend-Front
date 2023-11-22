@@ -1,34 +1,4 @@
-/* Estilos para la ventana emergente */
-.emergente {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid #ccc;
-    overflow: auto; /* Permite el desplazamiento si el contenido es demasiado grande */
-  }
-  
-  /* Estilos para el control de redimensionamiento */
-  .handle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    right: 0;
-    bottom: 0;
-    cursor: nwse-resize;
-    background-color: #000;
-  }
-  
-  .arrow {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    transform: rotate(-45deg);
-    bottom: -11px;
-    right: -11px;
-    cursor: nwse-resize;
-  }
+.containerFact {
+  position: absolute;
+  top: 70px;
+}

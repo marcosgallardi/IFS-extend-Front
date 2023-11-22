@@ -3,13 +3,14 @@ import { RiArrowLeftSLine } from "react-icons/ri";
 import style from "./Sidebar.module.css";
 import tuerca from "../../assets/Tuerca.png";
 
-export const Sidebar = () => {
+export const Sidebar = ({ switcher, setRender, render }) => {
   const [isCollapse, setIsCollapse] = useState(false);
   const [toggleAdm, setToggleAdm] = useState(false);
   const [toggleRRHH, setToggleRRHH] = useState(false);
 
   const handleToggleMenu = () => {
     setIsCollapse(!isCollapse);
+    switcher(!isCollapse);
   };
 
   const handleToggleAdm = () => {
@@ -19,6 +20,18 @@ export const Sidebar = () => {
   const handleToggleRRHH = () => {
     setToggleRRHH(!toggleRRHH);
   };
+
+  const handleRender = (name) => {
+    setRender({
+      modNov: false,
+      modInternos: false,
+      modMenu: false,
+      elimNov: false,
+      factOrden: false,
+      [name]: true,
+    });
+  };
+
   return (
     <div>
       <div
@@ -46,27 +59,47 @@ export const Sidebar = () => {
           </button>
           {isCollapse ? <p className={style.text}>Abrir barra</p> : null}
           <div className={style.filteredContent}>
-            <hr className={style.divider}/>
+            <hr className={style.divider} />
             <div className={style.filters} onClick={handleToggleRRHH}>
               Recursos Humanos
             </div>
             {toggleRRHH ? (
               <>
-                <div className={style.subFilters}>Modificar Novedades</div>
-                <div className={style.subFilters}>Modificar Internos</div>
-                <div className={style.subFilters}>Modificar Menu</div>
-                <div className={style.subFilters}>Eliminar Novedad</div>
+                <div
+                  className={style.subFilters}
+                  onClick={() => handleRender("modNov")}>
+                  Modificar Novedades
+                </div>
+                <div
+                  className={style.subFilters}
+                  onClick={() => handleRender("modInternos")}>
+                  Modificar Internos
+                </div>
+                <div
+                  className={style.subFilters}
+                  onClick={() => handleRender("modMenu")}>
+                  Modificar Menu
+                </div>
+                <div
+                  className={style.subFilters}
+                  onClick={() => handleRender("elimNov")}>
+                  Eliminar Novedad
+                </div>
               </>
             ) : null}
-            <hr className={style.divider}/>
+            <hr className={style.divider} />
             <div className={style.filtersContainer}>
               <div className={style.filters} onClick={handleToggleAdm}>
                 Administracion
               </div>
               {toggleAdm ? (
-                <div className={style.subFilters}>Factura para orden</div>
+                <div
+                  className={style.subFilters}
+                  onClick={() => handleRender("factOrden")}>
+                  Factura para orden
+                </div>
               ) : null}
-              <hr className={style.divider}/>
+              <hr className={style.divider} />
             </div>
           </div>
         </div>
