@@ -27,7 +27,7 @@ export const Login = () => {
   const onSubmitLogin = async (e) => {
     e.preventDefault();
     const loginSuccess = await dispatch(loginAction(username, password, base));
-    console.log(loginSuccess === true, "condicion!!");
+
     if (loginSuccess === true) {
       navigate("/home");
     } else {

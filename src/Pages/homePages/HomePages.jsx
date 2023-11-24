@@ -35,8 +35,8 @@ export const HomePages = () => {
           flexDirection: "column",
           marginLeft: "20px",
         }}>
-        <NavbarDashboard close={closeSidebar} />
-        {render.factOrden ? <FacturaOrden close={closeSidebar} /> : null}
+        <NavbarDashboard close={closeSidebar} factRender={render.factOrden}/>
+        {render.factOrden ? <FacturaOrden  /> : null}
         {render.modNov ? <ModNovedades /> : null}
         {render.modInternos ? <ModInternos /> : null}
         {render.modMenu ? <ModMenu /> : null}
