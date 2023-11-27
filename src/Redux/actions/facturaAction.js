@@ -1,14 +1,16 @@
 import { server } from "../../Helpers/pathServers";
 import axios from "axios";
+import { getFactura } from "../slices/facturaSlice";
 
 export const facturaAction =
-  ({series_id, invoice_no, identity}) => async (dispatch) => {
+  ({ series_id, invoice_no, identity }) =>
+  async (dispatch) => {
     try {
-      const { data } = await axios.get(`${server}/invoice`, {
-        series_id,
-        invoice_no,
-        identity,
-      });
+   
+      const { data } = await axios.get(
+        `${server}/invoice?series_id=${series_id}&invoice_no=${invoice_no}&identity${identity}`
+      );
+
       dispatch(getFactura(data));
     } catch (error) {
       console.log(error);

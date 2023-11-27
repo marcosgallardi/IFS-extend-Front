@@ -3,35 +3,37 @@ import { PiMagnifyingGlassDuotone } from "react-icons/pi";
 import { IoIosExit } from "react-icons/io";
 import { useState } from "react";
 import { facturaAction } from "../../Redux/actions/facturaAction";
+import { useDispatch } from "react-redux";
 
 export const NavbarDashboard = ({ close, factRender }) => {
+  const dispatch = useDispatch();
+
   let initialState = {
-    series_id: null,
-    invoice_no: null,
-    identity: null,
+    series_id: "",
+    invoice_no: "",
+    identity: "",
   };
 
   const [inputFact, setInputFact] = useState(initialState);
 
-  console.log(inputFact);
   const handleInputFact = ({ target }) => {
     setInputFact({
       ...inputFact,
       [target.name]: target.value,
     });
   };
+  console.log(inputFact)
   const onSubmitFact = async (e) => {
     e.preventDefault();
     try {
       if (inputFact.series_id && inputFact.invoice_no) {
-        await facturaAction(inputFact);
+        await dispatch(facturaAction(inputFact));
       } else {
         alert("Faltan datos por llenar");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-   
   };
 
   return (
