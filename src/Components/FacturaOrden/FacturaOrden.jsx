@@ -7,9 +7,11 @@ export const FacturaOrden = () => {
   const factura = useSelector((state) => state.factura);
   console.log(factura);
   return (
-    <div className={style.containerFact}>
-      <h3 className="pt-2">Factura del cliente:</h3>
-      <Factura />
+    <div className="div">
+      <div className={style.containerFact}>
+        <h3 className="pt-2">Factura del cliente:</h3>
+      </div>
+        <Factura />
     </div>
   );
 };

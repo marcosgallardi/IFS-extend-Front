@@ -1,10 +1,10 @@
-import React from "react";
+import style from "./FacturaOrden.module.css";
 
 export const Item = ({ name, valor }) => {
   return (
-    <>
-      <label>{name}</label>
+    <div className={style.inputWrapper}>
+      <label>{name}</label> 
       <input type="text" value={valor} />
-    </>
+    </div>
   );
 };

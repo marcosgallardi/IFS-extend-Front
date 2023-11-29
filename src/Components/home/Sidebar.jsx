@@ -1,15 +1,19 @@
-import { useState } from "react";
-import { RiArrowLeftSLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
 import style from "./Sidebar.module.css";
 import tuerca from "../../assets/Tuerca.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setSidebar } from "../../Redux/slices/sideBarSlice";
 
-export const Sidebar = ({ switcher, setRender, render }) => {
-  const [isCollapse, setIsCollapse] = useState(false);
+export const Sidebar = ({ switcher, setRender }) => {
   const [toggleAdm, setToggleAdm] = useState(false);
   const [toggleRRHH, setToggleRRHH] = useState(false);
+  let {isCollapse} = useSelector((state) => state.sidebar);
+  const dispatch = useDispatch();
+
+  console.log(isCollapse);
 
   const handleToggleMenu = () => {
-    setIsCollapse(!isCollapse);
+    dispatch(setSidebar(!isCollapse));
     switcher(!isCollapse);
   };
 
