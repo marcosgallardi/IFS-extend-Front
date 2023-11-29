@@ -31,7 +31,7 @@ export const Login = () => {
     if (loginSuccess === true) {
       navigate("/home");
     } else {
-      alert("password incorrecta");
+      alert("Usuario o contraseña incorrecta");
     }
   };
 

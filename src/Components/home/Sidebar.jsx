@@ -10,7 +10,7 @@ export const Sidebar = ({ switcher, setRender }) => {
   let {isCollapse} = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
 
-  console.log(isCollapse);
+
 
   const handleToggleMenu = () => {
     dispatch(setSidebar(!isCollapse));
