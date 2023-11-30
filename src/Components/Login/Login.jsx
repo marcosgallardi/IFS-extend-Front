@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { loginAction } from "../../Redux/actions/loginAction";
 import styles from "../Login/Login.module.css";
 import login1 from "../../assets/login1.png";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -11,6 +12,9 @@ export const Login = () => {
     password: "",
     base: "",
   });
+
+  const [isIncorrectLogin, setIsIncorrectLogin] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,9 +35,20 @@ export const Login = () => {
     if (loginSuccess === true) {
       navigate("/home");
     } else {
-      alert("Usuario o contraseña incorrecta");
+      setIsIncorrectLogin(true);
+      Swal.fire({
+        icon: "error",
+        title: "Invalido",
+        text: "Usuario o contraseña incorrecta",
+        footer: "Si no recuerda algun dato contacte al administrador",
+        confirmButtonColor: "#0c3e62",
+      });
     }
   };
+
+  useEffect(() => {
+    setIsIncorrectLogin(false);
+  }, [dispatch]);
 
   return (
     <div className={styles.box}>
@@ -41,7 +56,9 @@ export const Login = () => {
       <form className={styles.positionInput} onSubmit={onSubmitLogin}>
         <input
           type="text"
-          className={styles.inputLogin}
+          className={`${styles.inputLogin} ${
+            isIncorrectLogin ? styles.inputInvalid : ""
+          }`}
           placeholder="Escribi tu usuario"
           value={inputLogin.username}
           name="username"
@@ -50,7 +67,9 @@ export const Login = () => {
 
         <input
           type="password"
-          className={styles.inputLogin}
+          className={`${styles.inputLogin} ${
+            isIncorrectLogin ? styles.inputInvalid : ""
+          }`}
           placeholder="Escribi tu contraseña"
           value={inputLogin.password}
           name="password"
@@ -61,7 +80,6 @@ export const Login = () => {
           <option disabled selected>
             Base
           </option>
-
           <option value="IFSARG1P">IFS Produccion</option>
           <option value="IFSARG1T">IFS Test</option>
         </select>
