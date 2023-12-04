@@ -1,5 +1,6 @@
 import styles from "./NavbarDashboard.module.css";
 import { PiMagnifyingGlassDuotone } from "react-icons/pi";
+import { BsFillFloppy2Fill } from "react-icons/bs";
 import { IoIosExit } from "react-icons/io";
 import { useState } from "react";
 import { facturaAction } from "../../Redux/actions/facturaAction";
@@ -22,7 +23,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
       [target.name]: target.value,
     });
   };
-  console.log(inputFact)
+  console.log(inputFact);
   const onSubmitFact = async (e) => {
     e.preventDefault();
     try {
@@ -54,7 +55,17 @@ export const NavbarDashboard = ({ close, factRender }) => {
               className={!close ? styles.icon3 : styles.icon4}
             />
           )}
-
+          {factRender ? (
+            <span>
+              <BsFillFloppy2Fill
+                className={!close ? styles.icon : styles.icon2}
+              />
+            </span>
+          ) : (
+            <BsFillFloppy2Fill
+              className={!close ? styles.icon3 : styles.icon4}
+            />
+          )}
           <button className={styles.buttonLogout}>
             Salir{" "}
             <span>
