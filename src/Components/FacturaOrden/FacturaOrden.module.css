@@ -3,13 +3,30 @@
   top: 10%;
 }
 
+.containerFact2{
+  position: absolute;
+  top: 60%;
+}
+
 .containerFactura {
+  position: absolute;
+  top: 20%;
+  left: 38%;
+}
+
+.containerFactura1{
+  position: absolute;
+  top:20%;
+  left: 23%;
+}
+
+.containerFactura2 {
   position: absolute;
   top: 150px;
   left: 38%;
 }
 
-.containerFactura1{
+.containerFactura3{
   position: absolute;
   top: 150px;
   left: 23%;
