@@ -22,13 +22,13 @@
 
 .containerFactura2 {
   position: absolute;
-  top: 150px;
+  top: 67%;
   left: 38%;
 }
 
 .containerFactura3{
   position: absolute;
-  top: 150px;
+  top: 67%;
   left: 23%;
 }
 
@@ -59,4 +59,27 @@
 
 .inputWrapper input:focus {
   border-color: #0c3e62;
+}
+
+.tableContainer {
+  width: 800px; /* Ancho fijo */
+  height: 200px; /* Alto fijo */
+  overflow: auto; /* Añade scroll cuando el contenido excede el tamaño del contenedor */
+}
+
+.excelTable {
+  width: 100%; /* Utiliza el ancho completo del contenedor */
+  border-collapse: collapse; /* Borra los espacios entre celdas */
+}
+
+.excelTable th,
+.excelTable td {
+  border: 1px solid #ddd; /* Añade bordes a las celdas */
+  padding: 8px; /* Espacio interno de las celdas */
+  text-align: center; /* Centra el texto dentro de las celdas */
+}
+
+.excelTable th {
+  background-color: #f2f2f2; /* Color de fondo para encabezados */
+  
 }
