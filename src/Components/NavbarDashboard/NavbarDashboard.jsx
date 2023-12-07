@@ -4,7 +4,9 @@ import { BsFillFloppy2Fill } from "react-icons/bs";
 import { IoIosExit } from "react-icons/io";
 import { useState } from "react";
 import { facturaAction } from "../../Redux/actions/facturaAction";
+import { getToOrder } from "../../Helpers/getToOrder";
 import { useDispatch } from "react-redux";
+import { ordenAction } from "../../Redux/actions/ordenAction";
 
 export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
@@ -23,12 +25,14 @@ export const NavbarDashboard = ({ close, factRender }) => {
       [target.name]: target.value,
     });
   };
-  console.log(inputFact);
+
   const onSubmitFact = async (e) => {
     e.preventDefault();
     try {
       if (inputFact.series_id && inputFact.invoice_no) {
-        await dispatch(facturaAction(inputFact));
+        let data = await dispatch(facturaAction(inputFact));
+
+        await dispatch(ordenAction(data[0].IDENTITY));
       } else {
         alert("Faltan datos por llenar");
       }

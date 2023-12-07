@@ -3,7 +3,7 @@
   top: 10%;
 }
 
-.containerFact2{
+.containerFact2 {
   position: absolute;
   top: 60%;
 }
@@ -14,9 +14,9 @@
   left: 38%;
 }
 
-.containerFactura1{
+.containerFactura1 {
   position: absolute;
-  top:20%;
+  top: 20%;
   left: 23%;
 }
 
@@ -26,7 +26,7 @@
   left: 38%;
 }
 
-.containerFactura3{
+.containerFactura3 {
   position: absolute;
   top: 67%;
   left: 23%;
@@ -81,5 +81,17 @@
 
 .excelTable th {
   background-color: #f2f2f2; /* Color de fondo para encabezados */
-  
+}
+
+.containerMessageOrder {
+  width: 500px;
+  position: absolute;
+  top: 80px;
+  left: 150px;
+}
+
+.messageOrder {
+  font-size: 23px;
+  font-weight: 350;
+  white-space: normal;
 }

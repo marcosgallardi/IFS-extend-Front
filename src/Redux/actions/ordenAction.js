@@ -1,6 +1,6 @@
 import axios from "axios";
 import { server } from "../../Helpers/pathServers";
-import { setOrden } from "../slices/ondenSlice";
+import { setOrden } from "../slices/ordenSlice";
 
 export const ordenAction = (cliente) => async (dispatch) => {
   try {

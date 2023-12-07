@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import loginSlice from "./slices/loginSlice";
 import facturaSlice from "./slices/facturaSlice";
 import sideBarSlice from "./slices/sideBarSlice";
-import ordenSlice from "./slices/ondenSlice";
+import ordenSlice from "./slices/ordenSlice";
 
 
 const reducer = combineReducers({
