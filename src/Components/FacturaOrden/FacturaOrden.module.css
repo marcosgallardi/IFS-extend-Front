@@ -62,36 +62,69 @@
 }
 
 .tableContainer {
-  width: 800px; /* Ancho fijo */
+  width: 880px; /* Ancho fijo */
   height: 200px; /* Alto fijo */
   overflow: auto; /* Añade scroll cuando el contenido excede el tamaño del contenedor */
+  position: absolute;
+  top: 67%;
+  left: 38%;
+}
+
+.tableContainer1 {
+  width: 1150px; /* Ancho fijo */
+  height: 200px; /* Alto fijo */
+  overflow: auto; /* Añade scroll cuando el contenido excede el tamaño del contenedor */
+  position: absolute;
+  top: 67%;
+  left: 19%;
 }
 
 .excelTable {
-  width: 100%; /* Utiliza el ancho completo del contenedor */
-  border-collapse: collapse; /* Borra los espacios entre celdas */
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .excelTable th,
 .excelTable td {
-  border: 1px solid #ddd; /* Añade bordes a las celdas */
-  padding: 8px; /* Espacio interno de las celdas */
-  text-align: center; /* Centra el texto dentro de las celdas */
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: center;
+}
+
+.excelTable td {
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .excelTable th {
-  background-color: #f2f2f2; /* Color de fondo para encabezados */
+  background-color: #f2f2f2;
 }
 
 .containerMessageOrder {
   width: 500px;
   position: absolute;
-  top: 80px;
-  left: 150px;
+  top: 600px;
+  left: 700px;
 }
 
 .messageOrder {
   font-size: 23px;
   font-weight: 350;
   white-space: normal;
+}
+
+.inputStylesNone {
+  border: none;
+
+  border-radius: 0;
+  width: 60px;
+  padding: 0;
+
+  outline: none;
+
+  text-align: center;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
