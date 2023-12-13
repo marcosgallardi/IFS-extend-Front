@@ -1,0 +1,12 @@
+.sizeCardNov{
+    width: 300px;
+    height: 400px;
+      padding: 20px;
+}
+
+
+.positionModNov{
+position: absolute;
+top: 15%;
+left: 20%;
+}

@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import { Novedades } from "../../NovedadesLanding/Novedades";
+import style from "../ModNovedades/ModNovedades.module.css";
 
 export const ModNovedades = () => {
   return (
-    <div>ModNovedades</div>
-  )
-}
+    <div className={style.positionModNov}>
+      <Novedades size={style.sizeCardNov} />
+    </div>
+  );
+};
