@@ -19,7 +19,7 @@ export const HomePages = () => {
   
   const [render, setRender] = useState(stateOfRender);
   
-  console.log(render)
+ 
   const [closeSidebar, setCloseSidebar] = useState(false);
 
   return (

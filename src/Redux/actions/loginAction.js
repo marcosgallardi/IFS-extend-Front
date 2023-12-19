@@ -3,7 +3,7 @@ import { setUser } from "../slices/loginSlice";
 import axios from "axios";
 
 export const loginAction = (username, password, base) => async (dispatch) => {
-  console.log(username, password, base);
+
   try {
     const { data } = await axios.get(
       `${server}/auth?username=${username}&password=${password}&base${base}`

@@ -13,6 +13,8 @@ export const Login = () => {
     base: "",
   });
 
+  const [selectedOption, setSelectedOption] = useState("IFSARG1T");
+
   const [isIncorrectLogin, setIsIncorrectLogin] = useState(false);
 
   const dispatch = useDispatch();
@@ -50,6 +52,14 @@ export const Login = () => {
     setIsIncorrectLogin(false);
   }, [dispatch]);
 
+  const onChangeBase = (e) => {
+    setSelectedOption(e.target.value);
+    setInputLogin({
+      ...inputLogin,
+      base: e.target.value,
+    });
+  };
+
   return (
     <div className={styles.box}>
       <img src={login1} alt="" className={styles.loginform} />
@@ -76,8 +86,8 @@ export const Login = () => {
           onChange={onClickLogin}
         />
 
-        <select name="base">
-          <option disabled selected>
+        <select name="base" value={selectedOption} onChange={onChangeBase}>
+          <option disabled>
             Base
           </option>
           <option value="IFSARG1P">IFS Produccion</option>

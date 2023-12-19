@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 
 export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
-  console.log(isCollapse);
+
   const [orden, setOrden] = useState("");
+  const [valueConciliar, setValueConciliar] = useState(0);
+
   let headers = [
-    "Conciliacion",
     "Order_no",
     "Line_no",
     "Rel_no",
@@ -15,16 +16,30 @@ export const TablaOrden = ({ data }) => {
     "Contracto",
     "Part_no",
     "Buy_qty_due",
-    "Sales_unit_mea",
+    "Sales_unit_meas",
     "Sale_unit_price",
+    "Discount",
     "Customer_no",
+    "line_item_no",
+    "Observaciones",
     "Dates",
     "State",
+    "Conciliado",
+    "Resto_Conciliar",
+    "Total_Con_Descuento",
+    "A_Conciliar",
   ];
 
   useEffect(() => {
     setOrden(data ? data : undefined);
   }, [data]);
+
+  const onChangeConciliar = (e) => {
+    let { name, value } = e.target;
+    let aux = name.split(",");
+    console.log(aux);
+    setValueConciliar(...valueConciliar, value[name]);
+  };
 
   return (
     <>
@@ -44,16 +59,18 @@ export const TablaOrden = ({ data }) => {
               {orden &&
                 orden.map((row, rowIndex) => (
                   <tr key={rowIndex}>
-                    <td>
-                      <input
-                        type="text"
-                        name=""
-                        className={style.inputStylesNone}
-                      />
-                    </td>
                     {row.map((cell, cellIndex) => (
                       <td key={cellIndex}>{cell}</td>
                     ))}
+                    <td>
+                      <input
+                        type="number"
+                        name={orden[rowIndex]}
+                        value={valueConciliar}
+                        onChange={onChangeConciliar}
+                        className={style.inputStylesNone}
+                      />
+                    </td>
                   </tr>
                 ))}
             </tbody>
@@ -75,6 +92,9 @@ export const TablaOrden = ({ data }) => {
               {orden &&
                 orden.map((row, rowIndex) => (
                   <tr key={rowIndex}>
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex}>{cell}</td>
+                    ))}
                     <td>
                       <input
                         type="check"
@@ -82,9 +102,6 @@ export const TablaOrden = ({ data }) => {
                         className={style.inputStylesNone}
                       />
                     </td>
-                    {row.map((cell, cellIndex) => (
-                      <td key={cellIndex}>{cell}</td>
-                    ))}
                   </tr>
                 ))}
             </tbody>

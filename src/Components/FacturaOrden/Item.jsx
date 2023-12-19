@@ -4,7 +4,7 @@ export const Item = ({ name, valor }) => {
   return (
     <div className={style.inputWrapper}>
       <label>{name}</label> 
-      <input type="text" value={valor} />
+      <input type="text" defaultValue={valor} />
     </div>
   );
 };
