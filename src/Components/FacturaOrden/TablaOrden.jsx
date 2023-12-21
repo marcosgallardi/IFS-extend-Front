@@ -3,22 +3,12 @@ import style from "./FacturaOrden.module.css";
 import { useSelector } from "react-redux";
 
 export const TablaOrden = ({ data }) => {
-  // let inicialState = [
-  //   {
-  //     order_no: "",
-  //     line_no: "",
-  //     rel_no: "",
-  //     A_Conciliar: 0,
-  //   },
-  // ];
   let { isCollapse } = useSelector((state) => state.sidebar);
+  const { allow } = useSelector((state) => state.allowConciliationSlice);
+ 
 
   const [orden, setOrden] = useState("");
   const [conciliatedValues, setConciliatedValues] = useState({});
-
-  console.log("clg de conciliated value", conciliatedValues);
-  // const [valueConciliar, setValueConciliar] = useState(inicialState);
-  // const [valueInput, setValueInput] = useState(0);
 
   let headers = [
     "Order_no",
@@ -42,47 +32,13 @@ export const TablaOrden = ({ data }) => {
     "A_Conciliar",
   ];
 
-  // console.log("clg del value a modificar", valueConciliar);
-
   useEffect(() => {
     setOrden(data ? data : undefined);
   }, [data]);
 
-  // const formatSubmit = () => {
-  //   let aux = [];
-  //   let objetKeys = Object.keys(conciliatedValues);
-  //   for (let i = 0; i < objetKeys.length; i++) {
-  //     return (aux = [...aux, orden[objetKeys[i]]]);
-  //   }
-  //   console.log(aux);
-  //   return aux;
-  // };
-
-  // useEffect(() => {
-  //   const auxilio = formatSubmit();
-  //   console.log(auxilio);
-  // }, [conciliatedValues]);
-
-  // const auxilio = formatSubmit();
-  // console.log(auxilio);
   const onChangeConciliar = (e, rowIndex) => {
     let { value, name } = e.target;
-    //intentando identificar la linea que fue modificada
-    // let aux = name.split(",");
-    // console.log(aux);
 
-    // setValueInput(value[name]);
-
-    // setValueConciliar([
-    //   ...valueConciliar,
-    //   {
-    //     order_no: aux[0],
-    //     line_no: aux[1],
-    //     rel_no: aux[2],
-    //     A_Conciliar: valueInput,
-    //   },
-    // ]);
-    console.log("clg del value", conciliatedValues);
     let aux = name.split(",");
 
     setConciliatedValues((prevValues) => ({
@@ -152,8 +108,10 @@ export const TablaOrden = ({ data }) => {
                     ))}
                     <td>
                       <input
-                        type="check"
-                        name=""
+                        type="number"
+                        name={orden[rowIndex]}
+                        value={conciliatedValues[rowIndex]?.value || ""}
+                        onChange={(e) => onChangeConciliar(e, rowIndex)}
                         className={style.inputStylesNone}
                       />
                     </td>

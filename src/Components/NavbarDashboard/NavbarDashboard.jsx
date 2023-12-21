@@ -7,6 +7,7 @@ import { facturaAction } from "../../Redux/actions/facturaAction";
 import { getToOrder } from "../../Helpers/getToOrder";
 import { useDispatch } from "react-redux";
 import { ordenAction } from "../../Redux/actions/ordenAction";
+import { allowAction } from "../../Redux/actions/allowAction";
 
 export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
@@ -41,8 +42,12 @@ export const NavbarDashboard = ({ close, factRender }) => {
     }
   };
 
+  const handleSaveConciliation = () => {
+    dispatch(allowAction(true));
+  };
+
   return (
-    <div>
+    <>
       <nav className={`${close ? styles.navbar2 : styles.navbar}`}>
         <ul>
           {factRender ? (
@@ -57,17 +62,26 @@ export const NavbarDashboard = ({ close, factRender }) => {
           ) : (
             <PiMagnifyingGlassDuotone
               className={!close ? styles.icon3 : styles.icon4}
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
             />
           )}
           {factRender ? (
             <span>
               <BsFillFloppy2Fill
                 className={!close ? styles.icon : styles.icon2}
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
               />
             </span>
           ) : (
             <BsFillFloppy2Fill
               className={!close ? styles.icon3 : styles.icon4}
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
             />
           )}
           <button className={styles.buttonLogout}>
@@ -145,6 +159,38 @@ export const NavbarDashboard = ({ close, factRender }) => {
           </div>
         </div>
       </div>
-    </div>
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Cargar conciliacion
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              Esta seguro que quiere guardar esta conciliacion?
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleSaveConciliation}>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
