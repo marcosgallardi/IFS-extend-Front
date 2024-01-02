@@ -1,11 +1,15 @@
+import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import style from "./FacturaOrden.module.css";
 import { useSelector } from "react-redux";
+import { allowAction } from "../../Redux/actions/allowAction";
+import { postConciliation } from "../../Helpers/postConciliation";
 
 export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
   const { allow } = useSelector((state) => state.allowConciliationSlice);
- 
+
+  const dispatch = useDispatch();
 
   const [orden, setOrden] = useState("");
   const [conciliatedValues, setConciliatedValues] = useState({});
@@ -31,6 +35,25 @@ export const TablaOrden = ({ data }) => {
     "Total_Con_Descuento",
     "A_Conciliar",
   ];
+
+  
+
+  useEffect(() => {
+    if (allow === true) {
+      if (Object.keys(conciliatedValues).length !== 0) {
+        postConciliation(conciliatedValues);
+      } else {
+        alert("No hay valores para conciliar");
+        dispatch(allowAction(false));
+      }
+    } else {
+      return;
+    }
+
+    return () => {
+      dispatch(allowAction(false));
+    };
+  }, [allow]);
 
   useEffect(() => {
     setOrden(data ? data : undefined);

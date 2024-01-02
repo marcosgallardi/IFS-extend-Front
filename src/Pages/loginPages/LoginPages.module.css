@@ -21,21 +21,23 @@
 }
 
 .positionLogin {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.positionFooter {
   position: absolute;
-  left: 38%;
-  top: 30%;
+  right: 3%;
+  bottom: 1%;
 }
 
-.positionFooter{
-    position: absolute;
-    right: 3%;
-    bottom: 1%;
-}
-
-.textoFooter{
-    color: aliceblue;
-    font-family:'Times New Roman', Times, serif;
-    font-size: 16px;
+.textoFooter {
+  color: aliceblue;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
 }
 .logoLoginWidth {
   width: 70px;

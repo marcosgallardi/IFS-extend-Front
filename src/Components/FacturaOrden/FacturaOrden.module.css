@@ -101,10 +101,9 @@
 }
 
 .containerMessageOrder {
-  width: 500px;
   position: absolute;
-  top: 600px;
-  left: 700px;
+  top: 75%;
+  left: 50%;
 }
 
 .messageOrder {

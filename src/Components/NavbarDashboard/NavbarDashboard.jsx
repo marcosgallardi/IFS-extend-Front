@@ -184,7 +184,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={handleSaveConciliation}>
+                onClick={handleSaveConciliation}
+                data-bs-dismiss="modal"
+                aria-label="Close">
                 Guardar
               </button>
             </div>
