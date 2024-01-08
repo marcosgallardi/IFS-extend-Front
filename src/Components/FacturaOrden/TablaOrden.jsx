@@ -15,6 +15,8 @@ export const TablaOrden = ({ data }) => {
   const [conciliatedValues, setConciliatedValues] = useState({});
 
   let headers = [
+    "A_Conciliar",
+    "Observaciones",
     "Order_no",
     "Line_no",
     "Rel_no",
@@ -33,10 +35,7 @@ export const TablaOrden = ({ data }) => {
     "Conciliado",
     "Resto_Conciliar",
     "Total_Con_Descuento",
-    "A_Conciliar",
   ];
-
-  
 
   useEffect(() => {
     if (allow === true) {
@@ -93,9 +92,6 @@ export const TablaOrden = ({ data }) => {
               {orden &&
                 orden.map((row, rowIndex) => (
                   <tr key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <td key={cellIndex}>{cell}</td>
-                    ))}
                     <td>
                       <input
                         type="number"
@@ -105,6 +101,18 @@ export const TablaOrden = ({ data }) => {
                         className={style.inputStylesNone}
                       />
                     </td>
+                    <td>
+                      <button
+                        className={style.buttonObs}
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2"
+                        data-bs-whatever="@getbootstrap">
+                        Nota
+                      </button>
+                    </td>
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex}>{cell}</td>
+                    ))}
                   </tr>
                 ))}
             </tbody>
@@ -126,9 +134,6 @@ export const TablaOrden = ({ data }) => {
               {orden &&
                 orden.map((row, rowIndex) => (
                   <tr key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <td key={cellIndex}>{cell}</td>
-                    ))}
                     <td>
                       <input
                         type="number"
@@ -138,6 +143,9 @@ export const TablaOrden = ({ data }) => {
                         className={style.inputStylesNone}
                       />
                     </td>
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex}>{cell}</td>
+                    ))}
                   </tr>
                 ))}
             </tbody>
@@ -148,6 +156,49 @@ export const TablaOrden = ({ data }) => {
           <p className={style.messageOrder}>Realiza una busqueda de factura!</p>
         </div>
       )}
+
+      <div
+        className="modal fade"
+        id="exampleModal2"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Nota
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label for="message-text" class="col-form-label">
+                    Observacion
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal">
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

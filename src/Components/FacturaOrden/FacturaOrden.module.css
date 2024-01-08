@@ -127,3 +127,16 @@
   -moz-appearance: none;
   appearance: none;
 }
+
+.buttonObs {
+  background-color: #0c3e62;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+}
