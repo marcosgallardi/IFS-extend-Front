@@ -29,7 +29,6 @@ export const ObservationMod = ({ name, value, onChange }) => {
                   </label>
                   <textarea
                     className="form-control"
-                    
                     id="message-text"></textarea>
                 </div>
               </form>
