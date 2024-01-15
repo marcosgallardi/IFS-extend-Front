@@ -8,24 +8,27 @@ import cumple from "../../assets/cumple.jpg";
 import uso from "../../assets/uso.jpg";
 
 export const Novedades = ({ size }) => {
-  const initialState = [null, null, null];
+  const initialState = { id: "", image: null };
   const [image, setImage] = useState(initialState);
 
   const onSelectImage = ({ target }) => {
     const { name, files } = target;
-    setImage({ ...image, [name]: files[0] });
+    setImage({ ...image, id: name, image: files[0] });
   };
 
+  console.log(image);
+
   const formData = new FormData();
-  if (image[0] !== null) formData.append("img1", image[0]);
-  if (image[1] !== null) formData.append("img2", image[1]);
-  if (image[2] !== null) formData.append("img3", image[2]);
+  formData.append("id", image.id);
+  formData.append("image", image.image);
+
+  console.log(formData, "log del formdata");
 
   const onSaveImage = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`${server}/rrhh/nov`);
-
+      const data = await axios.put(`${server}/rrhh/nov`, formData);
+      console.log(data, "data del submit");
       if (data.url) {
         alert("Imagenes actualizadas");
       } else {
@@ -95,12 +98,7 @@ export const Novedades = ({ size }) => {
             </div>
             <div className="modal-body">
               <p className="pb-2">Seleccione una imagen</p>
-              <input
-                type="file"
-                name="1"
-                value={image[1]}
-                onChange={onSelectImage}
-              />
+              <input type="file" name="1" onChange={onSelectImage} />
               <p className="text-center pt-5">
                 Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
                 pixeles. Ancho 400 pixeles
@@ -155,12 +153,7 @@ export const Novedades = ({ size }) => {
             </div>
             <div className="modal-body">
               <p className="pb-2">Seleccione una imagen</p>
-              <input
-                type="file"
-                name="2"
-                value={image[2]}
-                onChange={onSelectImage}
-              />
+              <input type="file" name="2" onChange={onSelectImage} />
               <p className="text-center pt-5">
                 Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
                 pixeles. Ancho 400 pixeles
@@ -215,12 +208,7 @@ export const Novedades = ({ size }) => {
             </div>
             <div className="modal-body">
               <p className="pb-2">Seleccione una imagen</p>
-              <input
-                type="file"
-                name="3"
-                value={image[3]}
-                onChange={onSelectImage}
-              />
+              <input type="file" name="3" onChange={onSelectImage} />
               <p className="text-center pt-5">
                 Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
                 pixeles. Ancho 400 pixeles
