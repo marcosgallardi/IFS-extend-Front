@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Card } from "../Cards/Card";
 import { server } from "../../Helpers/pathServers";
 import axios from "axios";
@@ -10,6 +10,7 @@ import uso from "../../assets/uso.jpg";
 export const Novedades = ({ size }) => {
   const initialState = { id: "", image: null };
   const [image, setImage] = useState(initialState);
+  const fileInputRef = useRef(null);
 
   const onSelectImage = ({ target }) => {
     const { name, files } = target;
@@ -31,6 +32,8 @@ export const Novedades = ({ size }) => {
       console.log(data, "data del submit");
       if (data.url) {
         alert("Imagenes actualizadas");
+        fileInputRef.current.value = null;
+        setImage(initialState);
       } else {
         alert("Error al actualizar las imagenes");
       }
