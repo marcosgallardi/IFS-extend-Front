@@ -5,7 +5,7 @@ import {
   sideBarSlice,
   ordenSlice,
   allowConciliationSlice,
-
+  modNovSlice,
 } from "./slices";
 
 const reducer = combineReducers({
@@ -14,7 +14,7 @@ const reducer = combineReducers({
   orden: ordenSlice,
   sidebar: sideBarSlice,
   allowConciliationSlice,
-
+  modNov: modNovSlice,
 });
 
 const store = configureStore({

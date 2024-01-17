@@ -3,6 +3,7 @@ import allowConciliationSlice from "./allowConciliationSlice";
 import loginSlice from "./loginSlice";
 import ordenSlice from "./ordenSlice";
 import sideBarSlice from "./sideBarSlice";
+import modNovSlice from "./modNovSlice";
 
 export {
   facturaSlice,
@@ -10,4 +11,5 @@ export {
   loginSlice,
   ordenSlice,
   sideBarSlice,
+  modNovSlice,
 };

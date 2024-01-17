@@ -6,20 +6,20 @@ import { ModNovedades } from "../../Components/RecursosHumanos/ModNovedades/ModN
 import { ModInternos } from "../../Components/RecursosHumanos/ModInternos/ModInternos";
 import { ModMenu } from "../../Components/RecursosHumanos/ModMenu/ModMenu";
 import { EliminarNov } from "../../Components/RecursosHumanos/EliminarNov/EliminarNov";
+import { PlaceholderDashboard } from "../../Components/LoadingComponents/PlaceholderDashboard";
 
 export const HomePages = () => {
   let stateOfRender = {
-    modNov: true,
+    placeholder: true,
+    modNov: false,
     modInternos: false,
     modMenu: false,
     elimNov: false,
     factOrden: false,
   };
 
-  
   const [render, setRender] = useState(stateOfRender);
-  
- 
+
   const [closeSidebar, setCloseSidebar] = useState(false);
 
   return (
@@ -35,8 +35,9 @@ export const HomePages = () => {
           flexDirection: "column",
           marginLeft: "20px",
         }}>
-        <NavbarDashboard close={closeSidebar} factRender={render.factOrden}/>
-        {render.factOrden ? <FacturaOrden  /> : null}
+        <NavbarDashboard close={closeSidebar} factRender={render.factOrden} />
+        {render.placeholder ? <PlaceholderDashboard /> : null}
+        {render.factOrden ? <FacturaOrden /> : null}
         {render.modNov ? <ModNovedades /> : null}
         {render.modInternos ? <ModInternos /> : null}
         {render.modMenu ? <ModMenu /> : null}

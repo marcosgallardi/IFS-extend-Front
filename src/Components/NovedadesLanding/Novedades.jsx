@@ -3,37 +3,36 @@ import { Card } from "../Cards/Card";
 import { server } from "../../Helpers/pathServers";
 import axios from "axios";
 import style from "../NovedadesLanding/Novedades.module.css";
-import image1 from "../../assets/gripe.jpg";
-import cumple from "../../assets/cumple.jpg";
-import uso from "../../assets/uso.jpg";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
-export const Novedades = ({ size }) => {
+export const Novedades = ({ size, showButtonChange }) => {
   const initialState = { id: "", image: null };
   const [image, setImage] = useState(initialState);
   const fileInputRef = useRef(null);
+
+  const [imagesCurrent, setImagesCurrent] = useState(null);
+
+  console.log(imagesCurrent);
 
   const onSelectImage = ({ target }) => {
     const { name, files } = target;
     setImage({ ...image, id: name, image: files[0] });
   };
 
-  console.log(image);
-
   const formData = new FormData();
   formData.append("id", image.id);
   formData.append("image", image.image);
 
-  console.log(formData, "log del formdata");
-
   const onSaveImage = async (e) => {
     e.preventDefault();
     try {
-      const data = await axios.put(`${server}/rrhh/nov`, formData);
-      console.log(data, "data del submit");
-      if (data.url) {
-        alert("Imagenes actualizadas");
+      const { data } = await axios.put(`${server}/rrhh/nov`, formData);
+
+      if (data.message === "Modificado con exito") {
         fileInputRef.current.value = null;
         setImage(initialState);
+        alert("Imagenes actualizadas");
       } else {
         alert("Error al actualizar las imagenes");
       }
@@ -41,41 +40,50 @@ export const Novedades = ({ size }) => {
       throw error.message;
     }
   };
-
+  useEffect(() => {
+    let aux = useSelector((state) => state.modNov.data);
+    setImagesCurrent(...aux);
+  }, [onSaveImage]);
   return (
     <>
       <div className={style.centeredContainer}>
         <div className={style.cardContainer}>
-          <Card image={image1} size={size} />
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop10"
-            className={style.cardButton}>
-            Cambiar
-          </button>
+          <Card image={imagesCurrent && imagesCurrent[0].URL} size={size} />
+          {showButtonChange && (
+            <button
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop10"
+              className={style.cardButton}>
+              Cambiar
+            </button>
+          )}
         </div>
 
         <div className={style.cardContainer}>
-          <Card image={cumple} size={size} />
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop11"
-            className={style.cardButton}>
-            Cambiar
-          </button>
+          <Card image={imagesCurrent && imagesCurrent[1].URL} size={size} />
+          {showButtonChange && (
+            <button
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop11"
+              className={style.cardButton}>
+              Cambiar
+            </button>
+          )}
         </div>
 
         <div className={style.cardContainer}>
-          <Card image={uso} size={size} />
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop12"
-            className={style.cardButton}>
-            Cambiar
-          </button>
+          <Card image={imagesCurrent && imagesCurrent[2].URL} size={size} />
+          {showButtonChange && (
+            <button
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop12"
+              className={style.cardButton}>
+              Cambiar
+            </button>
+          )}
         </div>
       </div>
 
@@ -101,7 +109,12 @@ export const Novedades = ({ size }) => {
             </div>
             <div className="modal-body">
               <p className="pb-2">Seleccione una imagen</p>
-              <input type="file" name="1" onChange={onSelectImage} />
+              <input
+                type="file"
+                name="1"
+                onChange={onSelectImage}
+                ref={fileInputRef}
+              />
               <p className="text-center pt-5">
                 Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
                 pixeles. Ancho 400 pixeles
@@ -156,7 +169,12 @@ export const Novedades = ({ size }) => {
             </div>
             <div className="modal-body">
               <p className="pb-2">Seleccione una imagen</p>
-              <input type="file" name="2" onChange={onSelectImage} />
+              <input
+                type="file"
+                name="2"
+                onChange={onSelectImage}
+                ref={fileInputRef}
+              />
               <p className="text-center pt-5">
                 Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
                 pixeles. Ancho 400 pixeles
@@ -211,7 +229,12 @@ export const Novedades = ({ size }) => {
             </div>
             <div className="modal-body">
               <p className="pb-2">Seleccione una imagen</p>
-              <input type="file" name="3" onChange={onSelectImage} />
+              <input
+                type="file"
+                name="3"
+                onChange={onSelectImage}
+                ref={fileInputRef}
+              />
               <p className="text-center pt-5">
                 Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
                 pixeles. Ancho 400 pixeles
