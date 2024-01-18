@@ -3,17 +3,20 @@ import { Card } from "../Cards/Card";
 import { server } from "../../Helpers/pathServers";
 import axios from "axios";
 import style from "../NovedadesLanding/Novedades.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { modNovAction } from "../../Redux/actions/modNovAction";
 
 export const Novedades = ({ size, showButtonChange }) => {
   const initialState = { id: "", image: null };
   const [image, setImage] = useState(initialState);
   const fileInputRef = useRef(null);
 
-  const [imagesCurrent, setImagesCurrent] = useState(null);
+  let aux = useSelector((state) => state.modNov.data);
 
-  console.log(imagesCurrent);
+  const dispatch = useDispatch();
+
+  const [imagesCurrent, setImagesCurrent] = useState(null);
 
   const onSelectImage = ({ target }) => {
     const { name, files } = target;
@@ -33,6 +36,7 @@ export const Novedades = ({ size, showButtonChange }) => {
         fileInputRef.current.value = null;
         setImage(initialState);
         alert("Imagenes actualizadas");
+        await dispatch(modNovAction());
       } else {
         alert("Error al actualizar las imagenes");
       }
@@ -40,15 +44,32 @@ export const Novedades = ({ size, showButtonChange }) => {
       throw error.message;
     }
   };
+
   useEffect(() => {
-    let aux = useSelector((state) => state.modNov.data);
-    setImagesCurrent(...aux);
+    const fetchData = async () => {
+      try {
+        await dispatch(modNovAction());
+      } catch (error) {
+        throw error.message;
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    setImagesCurrent(aux);
   }, [onSaveImage]);
+
+  console.log(imagesCurrent);
   return (
     <>
       <div className={style.centeredContainer}>
         <div className={style.cardContainer}>
-          <Card image={imagesCurrent && imagesCurrent[0].URL} size={size} />
+          <Card
+            image={imagesCurrent ? imagesCurrent[0]?.URL : null}
+            size={size}
+          />
           {showButtonChange && (
             <button
               type="button"
@@ -61,7 +82,10 @@ export const Novedades = ({ size, showButtonChange }) => {
         </div>
 
         <div className={style.cardContainer}>
-          <Card image={imagesCurrent && imagesCurrent[1].URL} size={size} />
+          <Card
+            image={imagesCurrent ? imagesCurrent[1]?.URL : null}
+            size={size}
+          />
           {showButtonChange && (
             <button
               type="button"
@@ -74,7 +98,10 @@ export const Novedades = ({ size, showButtonChange }) => {
         </div>
 
         <div className={style.cardContainer}>
-          <Card image={imagesCurrent && imagesCurrent[2].URL} size={size} />
+          <Card
+            image={imagesCurrent ? imagesCurrent[2]?.URL : null}
+            size={size}
+          />
           {showButtonChange && (
             <button
               type="button"

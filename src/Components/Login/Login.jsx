@@ -87,9 +87,7 @@ export const Login = () => {
         />
 
         <select name="base" value={selectedOption} onChange={onChangeBase}>
-          <option disabled>
-            Base
-          </option>
+          <option disabled>Base</option>
           <option value="IFSARG1P">IFS Produccion</option>
           <option value="IFSARG1T">IFS Test</option>
         </select>

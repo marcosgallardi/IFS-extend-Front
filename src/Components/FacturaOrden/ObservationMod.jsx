@@ -1,6 +1,7 @@
 import React from "react";
 
 export const ObservationMod = ({ name, value, onChange }) => {
+  console.log(name);
   return (
     <>
       <div
@@ -29,7 +30,9 @@ export const ObservationMod = ({ name, value, onChange }) => {
                   </label>
                   <textarea
                     className="form-control"
-                    id="message-text"></textarea>
+                    id="message-text">
+                      {name}
+                    </textarea>
                 </div>
               </form>
             </div>
