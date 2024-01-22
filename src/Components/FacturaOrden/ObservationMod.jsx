@@ -25,14 +25,13 @@ export const ObservationMod = ({ name, value, onChange }) => {
             <div className="modal-body">
               <form>
                 <div className="mb-3">
-                  <label for="message-text" class="col-form-label">
+                  <label for="message-text" className="col-form-label">
                     Observacion
                   </label>
                   <textarea
                     className="form-control"
-                    id="message-text">
-                      {name}
-                    </textarea>
+                    id="message-text"
+                    value={name}></textarea>
                 </div>
               </form>
             </div>

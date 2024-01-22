@@ -59,6 +59,10 @@ export const TablaOrden = ({ data }) => {
     setOrden(data ? data : undefined);
   }, [data]);
 
+  const onChangeObservartion = (e, rowIndex) => {
+    
+  }
+
   const onChangeConciliar = (e, rowIndex) => {
     let { value, name } = e.target;
 
@@ -71,6 +75,7 @@ export const TablaOrden = ({ data }) => {
         order_no: aux[0],
         line_no: aux[1],
         rel_no: aux[2],
+        line_item_no: aux[11],
       },
     }));
   };
