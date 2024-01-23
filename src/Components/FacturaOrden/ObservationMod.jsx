@@ -1,12 +1,12 @@
 import React from "react";
 
-export const ObservationMod = ({ name, value, onChange }) => {
-  console.log(name);
+export const ObservationMod = ({ name, onChange, id, value }) => {
+  console.log(name[12]);
   return (
     <>
       <div
         className="modal fade"
-        id="exampleModal2"
+        id={`exampleModal2${id}`}
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -31,7 +31,9 @@ export const ObservationMod = ({ name, value, onChange }) => {
                   <textarea
                     className="form-control"
                     id="message-text"
-                    value={name}></textarea>
+                    name={id}
+                    onChange={(e) => onChange(e, id)}
+                    value={value}></textarea>
                 </div>
               </form>
             </div>
