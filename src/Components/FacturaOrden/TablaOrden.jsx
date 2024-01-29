@@ -13,9 +13,9 @@ export const TablaOrden = ({ data }) => {
   const dispatch = useDispatch();
 
   const [orden, setOrden] = useState("");
-  const [observation, setObservation] = useState({});
+
   const [conciliatedValues, setConciliatedValues] = useState({});
-  console.log(observation, "log de la observacions!!!");
+
   let headers = [
     "A_Conciliar",
     "Observaciones",
@@ -39,17 +39,9 @@ export const TablaOrden = ({ data }) => {
     "Total_Con_Descuento",
   ];
 
-  const observar =
-    orden &&
-    orden.map((row) => {
-      return row[12];
-    });
-
   useEffect(() => {
     if (allow === true) {
-     
       if (Object.keys(conciliatedValues).length !== 0) {
-
         postConciliation(conciliatedValues);
       } else {
         alert("No hay valores para conciliar");
@@ -66,17 +58,7 @@ export const TablaOrden = ({ data }) => {
 
   useEffect(() => {
     setOrden(data ? data : undefined);
-    setObservation(observar);
   }, [data]);
-
-  const onChangeObservartion = (e) => {
-    const { value, name } = e.target;
-    setObservation((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
-
-  };
 
   const onChangeConciliar = (e, rowIndex) => {
     let { value, name } = e.target;
@@ -94,17 +76,6 @@ export const TablaOrden = ({ data }) => {
       },
     }));
   };
-
-  const observationFiltered = Object.keys(observation)
-    .filter((key) => observation[key] !== null)
-    .reduce((acc, key) => {
-      acc[key] = observation[key];
-      return acc;
-    }, {});
-
-
-
-  console.log(objetoFiltrado);
 
   return (
     <>
@@ -141,12 +112,7 @@ export const TablaOrden = ({ data }) => {
                         data-bs-whatever="@getbootstrap">
                         Nota
                       </button>
-                      <ObservationMod
-                        id={rowIndex}
-                        value={observation[rowIndex] || ""}
-                        name={row}
-                        onChange={(e) => onChangeObservartion(e, rowIndex)}
-                      />
+                      <ObservationMod id={rowIndex} name={orden[rowIndex]} />
                     </td>
                     {row.map((cell, cellIndex) => (
                       <td key={cellIndex}>{cell}</td>
