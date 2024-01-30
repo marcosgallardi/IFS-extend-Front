@@ -61,7 +61,7 @@ export const Novedades = ({ size, showButtonChange }) => {
     setImagesCurrent(aux);
   }, [onSaveImage]);
 
-  console.log(imagesCurrent);
+ 
   return (
     <>
       <div className={style.centeredContainer}>
