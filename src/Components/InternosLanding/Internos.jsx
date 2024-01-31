@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import comedor from "../../assets/comedor.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Internos.module.css";
-import { modIntAction } from "../../Redux/actions/modIntAction";
+
+import { modNovAction } from "../../Redux/actions/modNovAction";
+import axios from "axios";
+import { server } from "../../Helpers/pathServers";
 
 export const Internos = ({ size, showButtonChange }) => {
   const initialState = {
     id: "",
     image: null,
   };
+
+  let aux = useSelector((state) => state.modNov.data);
 
   const [image, setImage] = useState(initialState);
 
@@ -48,7 +53,7 @@ export const Internos = ({ size, showButtonChange }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await dispatch(modIntAction());
+        await dispatch(modNovAction());
       } catch (error) {
         throw error.message;
       }
@@ -62,9 +67,13 @@ export const Internos = ({ size, showButtonChange }) => {
   }, [onSaveImage]);
 
   return (
-    <div className="div">
-      <div className="position-relative">
-        <img src={comedor} alt="" className={style.cardSize} />
+    <div>
+      <div>
+        <img
+          src={imagesCurrent ? imagesCurrent[3]?.URL : null}
+          alt=""
+          className={size ? size : style.cardSize}
+        />
         {showButtonChange && (
           <button
             type="button"

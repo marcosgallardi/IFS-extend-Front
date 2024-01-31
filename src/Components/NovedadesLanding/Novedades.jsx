@@ -23,6 +23,8 @@ export const Novedades = ({ size, showButtonChange }) => {
     setImage({ ...image, id: name, image: files[0] });
   };
 
+ 
+
   const formData = new FormData();
   formData.append("id", image.id);
   formData.append("image", image.image);
@@ -61,7 +63,6 @@ export const Novedades = ({ size, showButtonChange }) => {
     setImagesCurrent(aux);
   }, [onSaveImage]);
 
- 
   return (
     <>
       <div className={style.centeredContainer}>

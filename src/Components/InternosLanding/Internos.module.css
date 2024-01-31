@@ -15,4 +15,5 @@
   margin-top: 80px;
   width: 600px;
   height: 800px;
+  box-sizing: border-box;
 }

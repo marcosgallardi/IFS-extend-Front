@@ -1,34 +1,29 @@
 .centeredContainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-}
-
-.cardContainer {
-  position: relative;
+  margin: 60px;
 }
 
 .cardButton {
   position: absolute;
-  bottom: 0px; 
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 16px;
-  background-color: #0c3e62ee; 
-  color: white; 
+  background-color: #0c3e62ee;
+  color: white;
   border: none;
   border-radius: 7px;
   cursor: pointer;
 }
-.cardButton:hover{
+.cardButton:hover {
   position: absolute;
-  bottom: 0px; 
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 16px;
-  background-color: #0c3e62; 
-  color: rgba(255, 255, 255, 0.906); 
+  background-color: #0c3e62;
+  color: rgba(255, 255, 255, 0.906);
   font-weight: bold;
   border: none;
   border-radius: 7px;
