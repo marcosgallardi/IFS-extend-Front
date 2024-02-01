@@ -23,8 +23,6 @@ export const Novedades = ({ size, showButtonChange }) => {
     setImage({ ...image, id: name, image: files[0] });
   };
 
- 
-
   const formData = new FormData();
   formData.append("id", image.id);
   formData.append("image", image.image);
@@ -63,10 +61,19 @@ export const Novedades = ({ size, showButtonChange }) => {
     setImagesCurrent(aux);
   }, [onSaveImage]);
 
+  const auxiliar = imagesCurrent?.filter((image) => {
+    if (image.ID !== 4 && image.ID !== 5) {
+      return {
+        id: image.id,
+        URL: image.URL,
+      };
+    }
+  });
+
   return (
     <>
       <div className={style.centeredContainer}>
-        <div className={style.cardContainer}>
+        <div className={showButtonChange && style.cardContainer}>
           <Card
             image={imagesCurrent ? imagesCurrent[0]?.URL : null}
             size={size}

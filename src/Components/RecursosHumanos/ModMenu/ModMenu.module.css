@@ -1,0 +1,12 @@
+.positionModInt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+  }
+  
+  .positionTitleInt {
+    position: absolute;
+    top: 13%;
+  }
+  

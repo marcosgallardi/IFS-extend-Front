@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import style from "./Internos.module.css";
+import style from "./Menu.module.css";
 
 import { modNovAction } from "../../Redux/actions/modNovAction";
 import axios from "axios";
 import { server } from "../../Helpers/pathServers";
 
-export const Internos = ({ size, showButtonChange }) => {
+export const Menu = ({ size, showButtonChange }) => {
   const initialState = {
     id: "",
     image: null,
@@ -50,6 +50,10 @@ export const Internos = ({ size, showButtonChange }) => {
     }
   };
 
+  const auxiliar = imagesCurrent?.find((image) => image.ID === 5);
+
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -66,11 +70,9 @@ export const Internos = ({ size, showButtonChange }) => {
     setImagesCurrent(aux);
   }, [onSaveImage]);
 
-  const auxiliar = imagesCurrent?.find((image) => image.ID === 4);
-
   return (
     <div>
-      <div className={showButtonChange && style.positionRel}>
+      <div>
         <img
           src={auxiliar ? auxiliar?.URL : null}
           alt=""
@@ -111,13 +113,13 @@ export const Internos = ({ size, showButtonChange }) => {
               <p className="pb-2">Seleccione una imagen</p>
               <input
                 type="file"
-                name="4"
+                name="5"
                 onChange={onSelectImage}
                 ref={fileInputRef}
               />
               <p className="text-center pt-5">
-                Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
-                pixeles. Ancho 400 pixeles
+                Se recomienda seleccionar una imagen de tamaño: <br /> Alto 800
+                pixeles. Ancho 950 pixeles
               </p>
               <p className="text-center pt-3">
                 puede redimensionar o recortar la imagen en este link:{" "}

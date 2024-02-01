@@ -1,4 +1,5 @@
 import { Internos } from "../../Components/InternosLanding/Internos";
+import { Menu } from "../../Components/MenuLanding/Menu";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Novedades } from "../../Components/NovedadesLanding/Novedades";
 import style from "../landingPages/LandingPage.module.css";
@@ -13,6 +14,10 @@ export const LandingPages = () => {
       <h2 className={style.TitleInt1}>Internos</h2>
       <div className={style.positionInternos}>
         <Internos size={style.internosImg} />
+      </div>
+      <h2 className={style.TitleInt1}>Menu</h2>
+      <div className={style.positionInternos}>
+        <Menu size={style.MenuImg} />
       </div>
     </>
   );

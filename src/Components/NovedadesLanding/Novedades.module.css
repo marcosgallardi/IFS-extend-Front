@@ -4,6 +4,10 @@
   margin: 60px;
 }
 
+.cardContainer {
+  position: relative;
+}
+
 .cardButton {
   position: absolute;
   bottom: 0px;

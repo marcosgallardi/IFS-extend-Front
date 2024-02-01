@@ -7,7 +7,7 @@ export const ModNovedades = () => {
     <div>
       <h2 className={style.positionTitle}>Modificar Novedades</h2>
       <div className={style.positionModNov}>
-        <Novedades size={style.sizeCardNov} showButtonChange={true}/>
+        <Novedades size={style.sizeCardNov} showButtonChange={true} />
       </div>
     </div>
   );

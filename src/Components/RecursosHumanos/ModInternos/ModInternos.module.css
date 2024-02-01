@@ -1,17 +1,14 @@
 .sizeCardInt {
-  width: 300px;
-  height: 400px;
-  padding: 20px;
+  width: 550px;
+  height: 700px;
 }
 
 .positionModInt {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 50px;
 }
 
 .positionTitleInt {
-  position: absolute;
-  top: 13%;
+  margin-top: 120px;
 }
