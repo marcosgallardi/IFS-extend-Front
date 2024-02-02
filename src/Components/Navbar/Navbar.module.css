@@ -35,6 +35,10 @@ nav ul a {
   height: 50px;
 }
 
-.positionUl{
+.positionUl {
   padding-top: 1%;
+}
+
+.containerNav {
+  height: 90px;
 }

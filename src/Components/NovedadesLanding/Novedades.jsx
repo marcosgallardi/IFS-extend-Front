@@ -70,14 +70,13 @@ export const Novedades = ({ size, showButtonChange }) => {
     }
   });
 
+  console.log(auxiliar);
+
   return (
     <>
       <div className={style.centeredContainer}>
         <div className={showButtonChange && style.cardContainer}>
-          <Card
-            image={imagesCurrent ? imagesCurrent[0]?.URL : null}
-            size={size}
-          />
+          <Card image={auxiliar ? auxiliar[0]?.URL : null} size={size} />
           {showButtonChange && (
             <button
               type="button"
@@ -89,11 +88,8 @@ export const Novedades = ({ size, showButtonChange }) => {
           )}
         </div>
 
-        <div className={style.cardContainer}>
-          <Card
-            image={imagesCurrent ? imagesCurrent[1]?.URL : null}
-            size={size}
-          />
+        <div className={showButtonChange && style.cardContainer}>
+          <Card image={auxiliar ? auxiliar[1]?.URL : null} size={size} />
           {showButtonChange && (
             <button
               type="button"
@@ -105,11 +101,8 @@ export const Novedades = ({ size, showButtonChange }) => {
           )}
         </div>
 
-        <div className={style.cardContainer}>
-          <Card
-            image={imagesCurrent ? imagesCurrent[2]?.URL : null}
-            size={size}
-          />
+        <div className={showButtonChange && style.cardContainer}>
+          <Card image={auxiliar ? auxiliar[2]?.URL : null} size={size} />
           {showButtonChange && (
             <button
               type="button"

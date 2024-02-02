@@ -72,7 +72,7 @@ export const Menu = ({ size, showButtonChange }) => {
 
   return (
     <div>
-      <div>
+      <div className="position-relative">
         <img
           src={auxiliar ? auxiliar?.URL : null}
           alt=""

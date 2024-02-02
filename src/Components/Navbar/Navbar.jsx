@@ -5,7 +5,7 @@ import { LogoSanmartin } from "../LogoSanmartin/LogoSanmartin";
 
 export const Navbar = () => {
   return (
-    <nav>
+    <nav className={styles.containerNav}>
         <LogoSanmartin width={styles.logoNavbarWidth} heigth={styles.logoNavbarHeigth}/>
       <ul className={styles.positionUl}>
         <Lista name={"Comedor"} path={"Comedor"} />
