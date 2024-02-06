@@ -1,3 +1,11 @@
+.PosRelative {
+  position: relative;
+}
+
+.PosAbsolute {
+  position: absolute;
+}
+
 .sizeCardLanding {
   width: 480px;
   height: 600px;
@@ -6,7 +14,13 @@
 
 .positionInternos {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 70px;
+}
+.positionInternos1 {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-top: 70px;
 }
@@ -26,8 +40,18 @@
   padding-top: 100px;
 }
 
-
-.MenuImg{
-  width: 1200px;
+.MenuImg {
+  width: 1000px;
   height: 800px;
+}
+
+.imgSize {
+  width: 400px;
+  height: 400px;
+  margin-top: -25rem;
+}
+
+.imgSize1 {
+  width: 500px;
+  height: 500px;
 }

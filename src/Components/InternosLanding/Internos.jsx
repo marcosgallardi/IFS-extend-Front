@@ -74,7 +74,7 @@ export const Internos = ({ size, showButtonChange }) => {
         <img
           src={auxiliar ? auxiliar?.URL : null}
           alt=""
-          className={size ? size : style.cardSize}
+          className={`${size ? size : style.cardSize} ${style.default}`}
         />
         {showButtonChange && (
           <button
