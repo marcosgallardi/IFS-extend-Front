@@ -7,6 +7,7 @@ import { ModInternos } from "../../Components/RecursosHumanos/ModInternos/ModInt
 import { ModMenu } from "../../Components/RecursosHumanos/ModMenu/ModMenu";
 import { EliminarNov } from "../../Components/RecursosHumanos/EliminarNov/EliminarNov";
 import { PlaceholderDashboard } from "../../Components/LoadingComponents/PlaceholderDashboard";
+import { Loading } from "../../Components/LoadingComponents/Loading";
 
 export const HomePages = () => {
   let stateOfRender = {
@@ -18,31 +19,46 @@ export const HomePages = () => {
     factOrden: false,
   };
 
+  const [loading, setLoading] = useState(false);
+
   const [render, setRender] = useState(stateOfRender);
 
   const [closeSidebar, setCloseSidebar] = useState(false);
 
+  setTimeout(() => {
+    setLoading(true);
+  }, 3000);
+
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "auto 1fr" }}>
-      <Sidebar
-        switcher={setCloseSidebar}
-        setRender={setRender}
-        render={render}
-      />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginLeft: "20px",
-        }}>
-        <NavbarDashboard close={closeSidebar} factRender={render.factOrden} />
-        {render.placeholder ? <PlaceholderDashboard /> : null}
-        {render.factOrden ? <FacturaOrden /> : null}
-        {render.modNov ? <ModNovedades /> : null}
-        {render.modInternos ? <ModInternos /> : null}
-        {render.modMenu ? <ModMenu /> : null}
-        {render.elimNov ? <EliminarNov /> : null}
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr" }}>
+          <Sidebar
+            switcher={setCloseSidebar}
+            setRender={setRender}
+            render={render}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: "20px",
+            }}>
+            <NavbarDashboard
+              close={closeSidebar}
+              factRender={render.factOrden}
+            />
+            {render.placeholder ? <PlaceholderDashboard /> : null}
+            {render.factOrden ? <FacturaOrden /> : null}
+            {render.modNov ? <ModNovedades /> : null}
+            {render.modInternos ? <ModInternos /> : null}
+            {render.modMenu ? <ModMenu /> : null}
+            {render.elimNov ? <EliminarNov /> : null}
+          </div>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 };

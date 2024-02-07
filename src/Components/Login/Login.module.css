@@ -5,22 +5,18 @@
   -webkit-backdrop-filter: blur(18px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  width: 350px;
-  height: 350px;
-}
-
-.box:hover{
-    width: 355px;
-  height: 355px;
+  width: 450px;
+  height: 450px;
 }
 
 .loginform {
+  display: flex;
+  justify-content: center;
+
   width: auto;
-  height: 140px;
-  position: absolute;
-  left: 29%;
-  top: 10%;
- 
+  height: 220px;
+  padding-top: 20px;
+  box-sizing: border-box;
 }
 
 .positionInput {
@@ -28,7 +24,6 @@
   flex-direction: column; /* Apila los elementos verticalmente */
   justify-content: center; /* Alinea los elementos verticalmente en el centro */
   align-items: center; /* Alinea los elementos horizontalmente en el centro */
-  height: 145%;
 }
 
 .inputLogin {
@@ -40,12 +35,11 @@
   font-size: 16px;
   outline: none;
   transition: border-color 0.2s;
-  
 }
 .inputLogin:focus {
   border-color: #0c3e62;
 }
-.inputInvalid{
+.inputInvalid {
   margin-bottom: 5px;
   width: 75%;
   padding: 7px;
@@ -70,5 +64,5 @@
 }
 
 .bottonLogin:hover {
-    background-color: #1960ac;
-  }
+  background-color: #1960ac;
+}

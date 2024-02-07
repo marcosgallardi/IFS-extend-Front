@@ -62,7 +62,9 @@ export const Login = () => {
 
   return (
     <div className={styles.box}>
-      <img src={login1} alt="" className={styles.loginform} />
+      <div className={styles.loginform}>
+        <img src={login1} alt="" className={styles.loginform} />
+      </div>
       <form className={styles.positionInput} onSubmit={onSubmitLogin}>
         <input
           type="text"
