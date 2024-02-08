@@ -6,12 +6,15 @@ import style from "./Internos.module.css";
 import { modNovAction } from "../../Redux/actions/modNovAction";
 import axios from "axios";
 import { server } from "../../Helpers/pathServers";
+import { Loading } from "../LoadingComponents/Loading";
 
 export const Internos = ({ size, showButtonChange }) => {
   const initialState = {
     id: "",
     image: null,
   };
+
+  const [loading, setLoading] = useState(false);
 
   let aux = useSelector((state) => state.modNov.data);
 
@@ -40,7 +43,11 @@ export const Internos = ({ size, showButtonChange }) => {
       if (data.message === "Modificado con exito") {
         fileInputRef.current.value = null;
         setImage(initialState);
-        alert("Imagenes actualizadas");
+
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
         await dispatch(modNovAction());
       } else {
         alert("Error al actualizar las imagenes");
@@ -70,82 +77,88 @@ export const Internos = ({ size, showButtonChange }) => {
 
   return (
     <div>
-      <div className={showButtonChange && style.positionRel}>
-        <img
-          src={auxiliar ? auxiliar?.URL : null}
-          alt=""
-          className={`${size ? size : style.cardSize} ${style.default}`}
-        />
-        {showButtonChange && (
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop20"
-            className={style.cardButton}>
-            Cambiar
-          </button>
-        )}
-      </div>
-
-      <div
-        className="modal fade"
-        id="staticBackdrop20"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true">
-        <form className="modal-dialog" onSubmit={onSaveImage}>
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
-                Cambiar imagen
-              </h5>
+      {!loading ? (
+        <>
+          <div className={showButtonChange && style.positionRel}>
+            <img
+              src={auxiliar ? auxiliar?.URL : null}
+              alt=""
+              className={`${size ? size : style.cardSize} ${style.default}`}
+            />
+            {showButtonChange && (
               <button
                 type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              <p className="pb-2">Seleccione una imagen</p>
-              <input
-                type="file"
-                name="4"
-                onChange={onSelectImage}
-                ref={fileInputRef}
-              />
-              <p className="text-center pt-5">
-                Se recomienda seleccionar una imagen de tamaño: <br /> Alto 500
-                pixeles. Ancho 400 pixeles
-              </p>
-              <p className="text-center pt-3">
-                puede redimensionar o recortar la imagen en este link:{" "}
-                <a
-                  href="https://www.iloveimg.com/es/redimensionar-imagen"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  https://www.iloveimg.com/es/redimensionar-imagen
-                </a>
-              </p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal">
-                Cerrar
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop20"
+                className={style.cardButton}>
+                Cambiar
               </button>
-              <button
-                type="submit"
-                data-bs-dismiss="modal"
-                className="btn btn-primary">
-                Guardar
-              </button>
-            </div>
+            )}
           </div>
-        </form>
-      </div>
+
+          <div
+            className="modal fade"
+            id="staticBackdrop20"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
+            <form className="modal-dialog" onSubmit={onSaveImage}>
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="staticBackdropLabel">
+                    Cambiar imagen
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <p className="pb-2">Seleccione una imagen</p>
+                  <input
+                    type="file"
+                    name="4"
+                    onChange={onSelectImage}
+                    ref={fileInputRef}
+                  />
+                  <p className="text-center pt-5">
+                    Se recomienda seleccionar una imagen de tamaño: <br /> Alto
+                    500 pixeles. Ancho 400 pixeles
+                  </p>
+                  <p className="text-center pt-3">
+                    puede redimensionar o recortar la imagen en este link:{" "}
+                    <a
+                      href="https://www.iloveimg.com/es/redimensionar-imagen"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      https://www.iloveimg.com/es/redimensionar-imagen
+                    </a>
+                  </p>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cerrar
+                  </button>
+                  <button
+                    type="submit"
+                    data-bs-dismiss="modal"
+                    className="btn btn-primary">
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

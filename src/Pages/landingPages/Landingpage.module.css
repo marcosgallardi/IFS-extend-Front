@@ -54,3 +54,10 @@
   width: 500px;
   height: 500px;
 }
+
+.footerLanding,
+h5 {
+  text-align: end;
+  padding: 4rem 2rem 0.9rem;
+  color: #1960ac;
+}

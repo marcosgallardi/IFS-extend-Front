@@ -28,6 +28,9 @@ export const LandingPages = () => {
         <Menu size={style.MenuImg} />
         <img src={image3} alt="" className={style.imgSize} />
       </div>
+      <div className={style.footerLanding}>
+        <h5>Desarrollado por TI Sanmartin Argentina</h5>
+      </div>
     </>
   );
 };
