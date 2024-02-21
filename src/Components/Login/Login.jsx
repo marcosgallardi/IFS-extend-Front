@@ -34,7 +34,7 @@ export const Login = () => {
     e.preventDefault();
     const loginSuccess = await dispatch(loginAction(username, password, base));
 
-    if (loginSuccess === true) {
+    if (loginSuccess.true === true) {
       navigate("/home");
     } else {
       setIsIncorrectLogin(true);

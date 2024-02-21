@@ -97,6 +97,16 @@
   cursor: pointer;
 }
 
+.filters1{
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff86;
+  cursor: pointer;
+}
+
 .filters label {
   margin-left: 1.5rem;
 }
