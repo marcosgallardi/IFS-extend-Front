@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Internos } from "../../Components/InternosLanding/Internos";
 import { Menu } from "../../Components/MenuLanding/Menu";
 import { Navbar } from "../../Components/Navbar/Navbar";
@@ -7,8 +8,26 @@ import image from "../../assets/img-background/Maintenance-pana.svg";
 import image1 from "../../assets/img-background/ManufacturingProcess-bro.svg";
 import image2 from "../../assets/img-background/Eatingtogether-amico.svg";
 import image3 from "../../assets/img-background/Tabletennis-rafiki.svg";
+import { loginAction } from "../../Redux/actions/loginAction";
+import { useDispatch } from "react-redux";
 
 export const LandingPages = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loginDefault = async () => {
+      try {
+        const result = await dispatch(loginAction("consulta", "CONSULTA", ""));
+
+        console.log(result);
+      } catch (error) {
+        console.error("Error during loginDefault:", error);
+      }
+    };
+
+    loginDefault();
+  }, []);
+
   return (
     <>
       <Navbar />
