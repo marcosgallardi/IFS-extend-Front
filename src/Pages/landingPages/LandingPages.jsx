@@ -11,15 +11,14 @@ import image3 from "../../assets/img-background/Tabletennis-rafiki.svg";
 import { loginAction } from "../../Redux/actions/loginAction";
 import { useDispatch } from "react-redux";
 
+
 export const LandingPages = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const loginDefault = async () => {
       try {
-        const result = await dispatch(loginAction("consulta", "CONSULTA", ""));
-
-        console.log(result);
+        await dispatch(loginAction("consulta", "CONSULTA", ""));
       } catch (error) {
         console.error("Error during loginDefault:", error);
       }

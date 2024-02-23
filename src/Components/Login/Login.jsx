@@ -5,6 +5,8 @@ import styles from "../Login/Login.module.css";
 import login1 from "../../assets/login1.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { server } from "../../Helpers/pathServers";
 
 export const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -32,6 +34,7 @@ export const Login = () => {
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
+    await axios.post(`${server}/logout`, { logout: true });
     const loginSuccess = await dispatch(loginAction(username, password, base));
 
     if (loginSuccess.true === true) {
