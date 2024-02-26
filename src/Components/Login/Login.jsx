@@ -34,7 +34,7 @@ export const Login = () => {
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
-    await axios.post(`${server}/logout`, { logout: true });
+    await axios.post(`${server}/auth/logout`, { logout: true });
     const loginSuccess = await dispatch(loginAction(username, password, base));
 
     if (loginSuccess.true === true) {

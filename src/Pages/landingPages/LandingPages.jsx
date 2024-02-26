@@ -11,7 +11,6 @@ import image3 from "../../assets/img-background/Tabletennis-rafiki.svg";
 import { loginAction } from "../../Redux/actions/loginAction";
 import { useDispatch } from "react-redux";
 
-
 export const LandingPages = () => {
   const dispatch = useDispatch();
 
@@ -25,7 +24,7 @@ export const LandingPages = () => {
     };
 
     loginDefault();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

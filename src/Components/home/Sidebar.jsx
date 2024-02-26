@@ -19,6 +19,8 @@ export const Sidebar = ({ switcher, setRender }) => {
     return RRHH.ROLE === "AR_RRHH";
   });
 
+  console.log(RRHHRole,"acaaaaaaaa")
+
   console.log(RRHHRole, "acaaaaaaaaaaaaaaa");
 
   const handleToggleMenu = () => {
