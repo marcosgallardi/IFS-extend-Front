@@ -4,41 +4,41 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 60px;
+
   background-color: whitesmoke;
 }
 
 nav ul a {
   color: #0c3e62;
-  font-size: 19px;
-  font-weight: 550;
+  font-size: 1.5rem;
+  font-weight: 500;
   text-decoration: none;
 }
 
 .positionList {
-  margin-left: 60px;
+  margin-left: 8rem;
 }
-
 .loginButtom {
   color: #0c3e62;
-  font-size: 20px;
+  font-size: 1.7rem;
   font-weight: 600;
   text-decoration: none;
   margin-right: 25px;
 }
 
 .logoNavbarWidth {
-  width: 50px;
+  width: 4rem;
+  margin-left: 15px;
 }
 
 .logoNavbarHeigth {
-  height: 50px;
+  height: 4rem;
 }
 
 .positionUl {
-  padding-top: 1%;
+  padding-top: 1rem;
 }
 
 .containerNav {
-  height: 90px;
+  height: 6rem;
 }

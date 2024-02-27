@@ -13,15 +13,14 @@ export const Sidebar = ({ switcher, setRender }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
   let { role } = useSelector((state) => state.login);
 
-
-  let RRHHRole = role[0].find((RRHH) => {
-  
-    return RRHH.ROLE === "AR_RRHH";
+  let RRHHRole = role[0]?.find((rrhh) => {
+    return rrhh.ROLE === "AR_RRHH";
   });
 
-  console.log(RRHHRole,"acaaaaaaaa")
-
-  console.log(RRHHRole, "acaaaaaaaaaaaaaaa");
+  let conciliacionRole = role[0]?.find((conciliacion) => {
+    return conciliacion.ROLE === "AR_CONCILIACION";
+  });
+  console.log(conciliacionRole);
 
   const handleToggleMenu = () => {
     dispatch(setSidebar(!isCollapse));
@@ -110,16 +109,22 @@ export const Sidebar = ({ switcher, setRender }) => {
             )}
             <hr className={style.divider} />
             <div className={style.filtersContainer}>
-              <div className={style.filters} onClick={handleToggleAdm}>
-                Administracion
-              </div>
-              {toggleAdm ? (
-                <div
-                  className={style.subFilters}
-                  onClick={() => handleRender("factOrden")}>
-                  Factura para orden
-                </div>
-              ) : null}
+              {conciliacionRole ? (
+                <>
+                  <div className={style.filters} onClick={handleToggleAdm}>
+                    Administracion
+                  </div>
+                  {toggleAdm ? (
+                    <div
+                      className={style.subFilters}
+                      onClick={() => handleRender("factOrden")}>
+                      Factura para orden
+                    </div>
+                  ) : null}
+                </>
+              ) : (
+                <div className={style.filters1}>Administracion</div>
+              )}
               <hr className={style.divider} />
             </div>
           </div>

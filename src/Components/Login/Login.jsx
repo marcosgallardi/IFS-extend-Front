@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { server } from "../../Helpers/pathServers";
+import { logoutUser } from "../../Helpers/logoutUser";
 
 export const Login = () => {
   const [inputLogin, setInputLogin] = useState({
@@ -34,7 +35,7 @@ export const Login = () => {
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
-    await axios.post(`${server}/auth/logout`, { logout: true });
+    await logoutUser();
     const loginSuccess = await dispatch(loginAction(username, password, base));
 
     if (loginSuccess.true === true) {

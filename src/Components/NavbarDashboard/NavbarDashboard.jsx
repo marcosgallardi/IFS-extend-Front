@@ -8,6 +8,8 @@ import { getToOrder } from "../../Helpers/getToOrder";
 import { useDispatch } from "react-redux";
 import { ordenAction } from "../../Redux/actions/ordenAction";
 import { allowAction } from "../../Redux/actions/allowAction";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../Helpers/logoutUser";
 
 export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ export const NavbarDashboard = ({ close, factRender }) => {
   };
 
   const [inputFact, setInputFact] = useState(initialState);
+
+  const navigate = useNavigate();
 
   const handleInputFact = ({ target }) => {
     setInputFact({
@@ -46,6 +50,11 @@ export const NavbarDashboard = ({ close, factRender }) => {
     dispatch(allowAction(true));
   };
 
+  const onLogoutClick = async () => {
+    await logoutUser();
+    navigate("/");
+  };
+
   return (
     <>
       <nav className={`${close ? styles.navbar2 : styles.navbar}`}>
@@ -62,9 +71,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
           ) : (
             <PiMagnifyingGlassDuotone
               className={!close ? styles.icon3 : styles.icon4}
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
             />
           )}
           {factRender ? (
@@ -79,12 +85,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
           ) : (
             <BsFillFloppy2Fill
               className={!close ? styles.icon3 : styles.icon4}
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
             />
           )}
-          <button className={styles.buttonLogout}>
+          <button className={styles.buttonLogout} onClick={onLogoutClick}>
             Salir{" "}
             <span>
               <IoIosExit className={styles.iconLogout} />

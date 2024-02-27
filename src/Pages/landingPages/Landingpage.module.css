@@ -32,11 +32,25 @@
 .TitleInt {
   padding-top: 150px;
   margin-left: 20px;
+  color: #0c3e62;
 }
 
 .TitleInt1 {
   margin-left: 20px;
   padding-top: 100px;
+  color: #0c3e62;
+}
+
+.TitleInt:hover {
+  padding-top: 150px;
+  margin-left: 20px;
+  color: #1960ac;
+}
+
+.TitleInt1:hover {
+  margin-left: 20px;
+  padding-top: 100px;
+  color: #1960ac;
 }
 
 .MenuImg {
