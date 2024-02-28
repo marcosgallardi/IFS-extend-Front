@@ -27,13 +27,10 @@ export const HomePages = () => {
   const [closeSidebar, setCloseSidebar] = useState(false);
 
   useEffect(() => {
-    
-  
     return () => {
-      logoutUser()
-    }
-  }, [])
-  
+      logoutUser();
+    };
+  }, []);
 
   setTimeout(() => {
     setLoading(true);

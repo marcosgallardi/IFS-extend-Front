@@ -100,12 +100,6 @@ export const Factura = () => {
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item valor={"algo"} name={"Impuesto"} />
             </div>
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <div className={style.inputWrapper}>
-                <label htmlFor="">Observaciones:</label>
-                <input />
-              </div>
-            </div>
           </div>
         </form>
       ) : (
@@ -177,12 +171,7 @@ export const Factura = () => {
             <div className="col-3 d-flex align-items-center justify-content-center">
               <Item valor={"algo"} name={"Impuesto"} />
             </div>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <div className={style.inputWrapper}>
-                <label htmlFor="">Observaciones:</label>
-                <input />
-              </div>
-            </div>
+           
           </div>
         </form>
       )}

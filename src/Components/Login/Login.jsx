@@ -5,8 +5,6 @@ import styles from "../Login/Login.module.css";
 import login1 from "../../assets/login1.png";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
-import { server } from "../../Helpers/pathServers";
 import { logoutUser } from "../../Helpers/logoutUser";
 
 export const Login = () => {

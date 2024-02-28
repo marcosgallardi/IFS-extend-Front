@@ -154,7 +154,7 @@ export const Novedades = ({ size, showButtonChange }) => {
                   />
                   <p className="text-center pt-5">
                     Se recomienda seleccionar una imagen de tamaño: <br /> Alto
-                    500 pixeles. Ancho 400 pixeles
+                    600 pixeles. Ancho 480 pixeles
                   </p>
                   <p className="text-center pt-3">
                     puede redimensionar o recortar la imagen en este link:{" "}
@@ -214,7 +214,7 @@ export const Novedades = ({ size, showButtonChange }) => {
                   />
                   <p className="text-center pt-5">
                     Se recomienda seleccionar una imagen de tamaño: <br /> Alto
-                    500 pixeles. Ancho 400 pixeles
+                    600 pixeles. Ancho 480 pixeles
                   </p>
                   <p className="text-center pt-3">
                     puede redimensionar o recortar la imagen en este link:{" "}
@@ -274,7 +274,7 @@ export const Novedades = ({ size, showButtonChange }) => {
                   />
                   <p className="text-center pt-5">
                     Se recomienda seleccionar una imagen de tamaño: <br /> Alto
-                    500 pixeles. Ancho 400 pixeles
+                    600 pixeles. Ancho 480 pixeles
                   </p>
                   <p className="text-center pt-3">
                     puede redimensionar o recortar la imagen en este link:{" "}

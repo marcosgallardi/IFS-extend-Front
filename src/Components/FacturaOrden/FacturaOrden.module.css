@@ -34,24 +34,23 @@
 
 .inputWrapper {
   position: relative;
-  margin-bottom: 20px; /* Espacio para separar el label del input */
+  margin-bottom: 20px;
 }
 
 .inputWrapper label {
   position: absolute;
-  top: -20px; /* Ajusta este valor para la posición vertical del label */
+  top: -28px;
   left: 0;
-  /* Otras propiedades de estilo opcionales para el label */
+  color: #0c3e62;
   font-weight: bold;
+  font-size: larger;
 }
 
 .inputWrapper input {
-  /* Estilos para el input */
-
-  width: 85%;
-  padding: 5px;
-  border: 2px solid #1960acca;
-  border-radius: 3px;
+  width: 15rem;
+  padding: 7px;
+  border: 3px solid #1960acca;
+  border-radius: 6px;
   font-size: 16px;
   outline: none;
   transition: border-color 0.2s;
