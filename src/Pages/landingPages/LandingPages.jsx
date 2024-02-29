@@ -27,9 +27,6 @@ export const LandingPages = () => {
     };
 
     loginDefault();
-    return () => {
-      logoutUser();
-    };
   }, [dispatch]);
 
   return (

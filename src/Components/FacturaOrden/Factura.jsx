@@ -171,7 +171,6 @@ export const Factura = () => {
             <div className="col-3 d-flex align-items-center justify-content-center">
               <Item valor={"algo"} name={"Impuesto"} />
             </div>
-           
           </div>
         </form>
       )}

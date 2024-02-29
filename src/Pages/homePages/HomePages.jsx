@@ -26,12 +26,6 @@ export const HomePages = () => {
 
   const [closeSidebar, setCloseSidebar] = useState(false);
 
-  useEffect(() => {
-    return () => {
-      logoutUser();
-    };
-  }, []);
-
   setTimeout(() => {
     setLoading(true);
   }, 3000);
