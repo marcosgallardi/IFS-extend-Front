@@ -20,7 +20,7 @@ export const Sidebar = ({ switcher, setRender }) => {
   let conciliacionRole = role[0]?.find((conciliacion) => {
     return conciliacion.ROLE === "AR_CONCILIACION";
   });
-  console.log(conciliacionRole);
+  
 
   const handleToggleMenu = () => {
     dispatch(setSidebar(!isCollapse));

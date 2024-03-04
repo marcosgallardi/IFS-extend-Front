@@ -77,8 +77,6 @@ export const Novedades = ({ size, showButtonChange }) => {
     }
   });
 
-  console.log(auxiliar);
-
   return (
     <>
       {!loading ? (
@@ -135,7 +133,7 @@ export const Novedades = ({ size, showButtonChange }) => {
             <form className="modal-dialog" onSubmit={onSaveImage}>
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="staticBackdropLabel">
+                  <h5 className="modal-title  p-0" id="staticBackdropLabel">
                     Cambiar imagen
                   </h5>
                   <button
@@ -195,7 +193,7 @@ export const Novedades = ({ size, showButtonChange }) => {
             <form className="modal-dialog" onSubmit={onSaveImage}>
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="staticBackdropLabel">
+                  <h5 className="modal-title p-0" id="staticBackdropLabel">
                     Cambiar imagen
                   </h5>
                   <button
@@ -255,7 +253,7 @@ export const Novedades = ({ size, showButtonChange }) => {
             <form className="modal-dialog" onSubmit={onSaveImage}>
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="staticBackdropLabel">
+                  <h5 className="modal-title  p-0" id="staticBackdropLabel">
                     Cambiar imagen
                   </h5>
                   <button

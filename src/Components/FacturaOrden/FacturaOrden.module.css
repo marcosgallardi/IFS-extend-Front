@@ -61,8 +61,8 @@
 }
 
 .tableContainer {
-  width: 880px; /* Ancho fijo */
-  height: 200px; /* Alto fijo */
+  max-width: 72rem;
+  max-height: 18rem;
   overflow: auto; /* Añade scroll cuando el contenido excede el tamaño del contenedor */
   position: absolute;
   top: 67%;
@@ -70,9 +70,9 @@
 }
 
 .tableContainer1 {
-  width: 1150px; /* Ancho fijo */
-  height: 200px; /* Alto fijo */
-  overflow: auto; /* Añade scroll cuando el contenido excede el tamaño del contenedor */
+  max-width: 95rem;
+  max-height: 18rem;
+  overflow: auto;
   position: absolute;
   top: 67%;
   left: 19%;

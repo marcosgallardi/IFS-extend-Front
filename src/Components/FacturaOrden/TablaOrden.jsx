@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { allowAction } from "../../Redux/actions/allowAction";
 import { postConciliation } from "../../Helpers/postConciliation";
 import { ObservationMod } from "./ObservationMod";
+import Swal from "sweetalert2";
 
 export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
@@ -31,7 +32,7 @@ export const TablaOrden = ({ data }) => {
     "Discount",
     "Customer_no",
     "line_item_no",
-    "Observaciones",
+    "",
     "Dates",
     "State",
     "Conciliado",
@@ -60,9 +61,19 @@ export const TablaOrden = ({ data }) => {
     setOrden(data ? data : undefined);
   }, [data]);
 
-  const onChangeConciliar = (e, rowIndex) => {
+  const onChangeConciliar = (e, rowIndex, lineValue) => {
     let { value, name } = e.target;
 
+    if (value > lineValue[16]) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalido",
+        text: "El valor ingresado es mayor al valor del monto a conciliar",
+        footer: `Esta intentando ingresar $ ${value} y el monto a conciliar es de $ ${lineValue[16]}`,
+        confirmButtonColor: "#0c3e62",
+      });
+      return;
+    }
     let aux = name.split(",");
 
     setConciliatedValues((prevValues) => ({
@@ -100,7 +111,9 @@ export const TablaOrden = ({ data }) => {
                         type="number"
                         name={orden[rowIndex]}
                         value={conciliatedValues[rowIndex]?.value || ""}
-                        onChange={(e) => onChangeConciliar(e, rowIndex)}
+                        onChange={(e) =>
+                          onChangeConciliar(e, rowIndex, orden[rowIndex])
+                        }
                         className={style.inputStylesNone}
                       />
                     </td>

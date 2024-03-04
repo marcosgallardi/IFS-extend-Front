@@ -38,7 +38,7 @@ export const ObservationMod = ({ name, id }) => {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title p-0" id="exampleModalLabel">
                 Nota
               </h5>
               <button

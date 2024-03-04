@@ -33,7 +33,7 @@ export const Login = () => {
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
-    await logoutUser();
+    const logout = await logoutUser();
     const loginSuccess = await dispatch(loginAction(username, password, base));
 
     if (loginSuccess.true === true) {
