@@ -9,6 +9,7 @@ import { EliminarNov } from "../../Components/RecursosHumanos/EliminarNov/Elimin
 import { PlaceholderDashboard } from "../../Components/LoadingComponents/PlaceholderDashboard";
 import { Loading } from "../../Components/LoadingComponents/Loading";
 import { logoutUser } from "../../Helpers/logoutUser";
+import { useLoading } from "../../hooks/useLoading";
 
 export const HomePages = () => {
   let stateOfRender = {
@@ -20,15 +21,11 @@ export const HomePages = () => {
     factOrden: false,
   };
 
-  const [loading, setLoading] = useState(false);
-
   const [render, setRender] = useState(stateOfRender);
 
   const [closeSidebar, setCloseSidebar] = useState(false);
 
-  setTimeout(() => {
-    setLoading(true);
-  }, 3000);
+  const { loading } = useLoading();
 
   return (
     <>

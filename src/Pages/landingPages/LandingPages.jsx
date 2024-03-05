@@ -11,7 +11,8 @@ import image3 from "../../assets/img-background/Tabletennis-rafiki.svg";
 import { loginAction } from "../../Redux/actions/loginAction";
 import { useDispatch } from "react-redux";
 import { modNovAction } from "../../Redux/actions/modNovAction";
-import { logoutUser } from "../../Helpers/logoutUser";
+import { useLoading } from "../../hooks/useLoading";
+import { Loading } from "../../Components/LoadingComponents/Loading";
 
 export const LandingPages = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export const LandingPages = () => {
   useEffect(() => {
     const loginDefault = async () => {
       try {
-        await dispatch(loginAction("consulta", "CONSULTA", ""));
+        await dispatch(loginAction("consulta", "CONSULTA", "IFSARG1T"));
         await dispatch(modNovAction());
       } catch (error) {
         console.error("Error during loginDefault:", error);
@@ -29,34 +30,42 @@ export const LandingPages = () => {
     loginDefault();
   }, [dispatch]);
 
+  const { loading } = useLoading();
+
   return (
     <>
-      <Navbar />
+      {loading ? (
+        <>
+          <Navbar />
 
-      <h2 className={style.TitleInt} id="Novedades">
-        Novedades
-      </h2>
-      <Novedades size={style.sizeCardLanding} />
-      <h2 className={style.TitleInt1} id="Internos">
-        Internos
-      </h2>
-      <div className={style.positionInternos1}>
-        <img src={image} alt="" className={style.imgSize1} />
-        <Internos size={style.internosImg} />
-        <img src={image1} alt="" className={style.imgSize1} />
-      </div>
-      <h2 className={style.TitleInt1} id="Comedor">
-        Menu
-      </h2>
-      <div className={style.positionInternos}>
-        <img src={image2} alt="" className={style.imgSize} />
+          <h2 className={style.TitleInt} id="Novedades">
+            Novedades
+          </h2>
+          <Novedades size={style.sizeCardLanding} />
+          <h2 className={style.TitleInt1} id="Internos">
+            Internos
+          </h2>
+          <div className={style.positionInternos1}>
+            <img src={image} alt="" className={style.imgSize1} />
+            <Internos size={style.internosImg} />
+            <img src={image1} alt="" className={style.imgSize1} />
+          </div>
+          <h2 className={style.TitleInt1} id="Comedor">
+            Menu
+          </h2>
+          <div className={style.positionInternos}>
+            <img src={image2} alt="" className={style.imgSize} />
 
-        <Menu size={style.MenuImg} />
-        <img src={image3} alt="" className={style.imgSize} />
-      </div>
-      <div className={style.footerLanding}>
-        <h5>Desarrollado por TI Sanmartin Argentina</h5>
-      </div>
+            <Menu size={style.MenuImg} />
+            <img src={image3} alt="" className={style.imgSize} />
+          </div>
+          <div className={style.footerLanding}>
+            <h5>Desarrollado por TI Sanmartin Argentina</h5>
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

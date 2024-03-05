@@ -6,7 +6,7 @@ export const loginAction = (username, password, base) => async (dispatch) => {
 
   try {
     const { data } = await axios.get(
-      `${server}/auth?username=${username}&password=${password}&base${base}`
+      `${server}/auth?username=${username}&password=${password}&base=${base}`
     );
   
     dispatch(setUser(data));

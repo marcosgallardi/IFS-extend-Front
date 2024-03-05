@@ -30,7 +30,7 @@ export const Login = () => {
   };
 
   const { username, password, base } = inputLogin;
-
+  console.log(base);
   const onSubmitLogin = async (e) => {
     e.preventDefault();
     const logout = await logoutUser();
@@ -54,11 +54,11 @@ export const Login = () => {
     setIsIncorrectLogin(false);
   }, [dispatch]);
 
-  const onChangeBase = (e) => {
-    setSelectedOption(e.target.value);
+  const onChangeBase = ({ target }) => {
+    setSelectedOption(target.value);
     setInputLogin({
       ...inputLogin,
-      base: e.target.value,
+      base: target.value,
     });
   };
 
