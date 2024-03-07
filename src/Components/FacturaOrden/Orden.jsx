@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { TablaOrden } from "../FacturaOrden/TablaOrden";
-import style from "./FacturaOrden.module.css";
 
 export const Orden = () => {
   let { orden } = useSelector((state) => state.orden);
@@ -10,10 +9,8 @@ export const Orden = () => {
   });
 
   return (
-    <div>
-   
-        <TablaOrden data={transformToArray} />
-      
-    </div>
+    <>
+      <TablaOrden data={transformToArray} />
+    </>
   );
 };

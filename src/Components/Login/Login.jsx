@@ -30,10 +30,10 @@ export const Login = () => {
   };
 
   const { username, password, base } = inputLogin;
-  console.log(base);
+
   const onSubmitLogin = async (e) => {
     e.preventDefault();
-    const logout = await logoutUser();
+    await logoutUser();
     const loginSuccess = await dispatch(loginAction(username, password, base));
 
     if (loginSuccess.true === true) {

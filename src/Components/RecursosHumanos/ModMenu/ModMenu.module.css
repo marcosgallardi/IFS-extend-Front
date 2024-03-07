@@ -1,12 +1,16 @@
 .positionModInt {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 50px;
-  }
-  
-  .positionTitleInt {
-    position: absolute;
-    top: 13%;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 9rem;
+}
+
+.positionTitleInt {
+  position: absolute;
+  top: 13%;
+}
+
+.sizeCardInt {
+  max-width: 60rem;
+  max-height: 40rem;
+}

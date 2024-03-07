@@ -87,7 +87,10 @@ export const Factura = () => {
               />
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item valor={"algo"} name={"invoice type"} />
+              <Item
+                valor={factura && factura[0] ? factura[0].INVOICE_TYPE : ""}
+                name={"Invoice type"}
+              />
             </div>
           </div>
           <div className="row pt-3">
@@ -98,7 +101,10 @@ export const Factura = () => {
               />
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item valor={"algo"} name={"Impuesto"} />
+              <Item
+                valor={factura && factura[0] ? factura[0].VAT_CURR_AMOUNT : ""}
+                name={"Impuesto"}
+              />
             </div>
           </div>
         </form>

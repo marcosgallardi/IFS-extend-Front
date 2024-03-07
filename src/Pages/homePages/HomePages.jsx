@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { FacturaOrden } from "../../Components/FacturaOrden/FacturaOrden";
 import { NavbarDashboard } from "../../Components/NavbarDashboard/NavbarDashboard";
 import { Sidebar } from "../../Components/home/Sidebar";
@@ -8,7 +8,7 @@ import { ModMenu } from "../../Components/RecursosHumanos/ModMenu/ModMenu";
 import { EliminarNov } from "../../Components/RecursosHumanos/EliminarNov/EliminarNov";
 import { PlaceholderDashboard } from "../../Components/LoadingComponents/PlaceholderDashboard";
 import { Loading } from "../../Components/LoadingComponents/Loading";
-import { logoutUser } from "../../Helpers/logoutUser";
+
 import { useLoading } from "../../hooks/useLoading";
 
 export const HomePages = () => {

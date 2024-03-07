@@ -6,6 +6,7 @@ import { allowAction } from "../../Redux/actions/allowAction";
 import { postConciliation } from "../../Helpers/postConciliation";
 import { ObservationMod } from "./ObservationMod";
 import Swal from "sweetalert2";
+import { ordenAction } from "../../Redux/actions/ordenAction";
 
 export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
@@ -43,7 +44,16 @@ export const TablaOrden = ({ data }) => {
   useEffect(() => {
     if (allow === true) {
       if (Object.keys(conciliatedValues).length !== 0) {
-        postConciliation(conciliatedValues);
+        try {
+          const execute = async () => {
+            await postConciliation(conciliatedValues);
+            await dispatch(ordenAction(data[0][10]));
+            
+          };
+          execute();
+        } catch (error) {
+          error.message;
+        }
       } else {
         alert("No hay valores para conciliar");
         dispatch(allowAction(false));
