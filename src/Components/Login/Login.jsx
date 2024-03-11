@@ -14,7 +14,7 @@ export const Login = () => {
     base: "",
   });
 
-  const [selectedOption, setSelectedOption] = useState("IFSARG1T");
+  const [selectedOption, setSelectedOption] = useState();
 
   const [isIncorrectLogin, setIsIncorrectLogin] = useState(false);
 
@@ -30,6 +30,8 @@ export const Login = () => {
   };
 
   const { username, password, base } = inputLogin;
+
+  console.log(base);
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
@@ -90,7 +92,13 @@ export const Login = () => {
           onChange={onClickLogin}
         />
 
-        <select name="base" value={selectedOption} onChange={onChangeBase}>
+        <select
+          name="base"
+          value={selectedOption}
+          onChange={onChangeBase}
+          defaultValue="Base"
+          className={styles.selectBase}
+          >
           <option disabled>Base</option>
           <option value="IFSARG1P">IFS Produccion</option>
           <option value="IFSARG1T">IFS Test</option>
