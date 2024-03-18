@@ -33,26 +33,6 @@ export const Factura = () => {
           <div className="row pt-3">
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
-                valor={factura && factura[0] ? factura[0].CURRENCY : ""}
-                name={"Divisa"}
-              />
-            </div>
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].CURR_RATE : ""}
-                name={"Tipo de cambio"}
-              />
-            </div>
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].GROSS_AMOUNT : ""}
-                name={"Imp bruto"}
-              />
-            </div>
-          </div>
-          <div className="row pt-3">
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item
                 valor={factura && factura[0] ? factura[0].IDENTITY : ""}
                 name={"Cliente"}
               />
@@ -60,36 +40,14 @@ export const Factura = () => {
 
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
-                valor={factura && factura[0] ? factura[0].INVOICE_DATE : ""}
-                name={"Fecha de factura"}
+                valor={factura && factura[0] ? factura[0].NAME : ""}
+                name={"Nombre"}
               />
             </div>
-
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].INVOICE_NO : ""}
-                name={"Numero de factura"}
-              />
-            </div>
-          </div>
-          <div className="row pt-3">
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].NET_CURR_AMOUNT : ""}
-                name={"Imp neto"}
-              />
-            </div>
-
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].PARTY_TYPE : ""}
-                name={"Party type"}
-              />
-            </div>
-            <div className="col-4 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].INVOICE_TYPE : ""}
-                name={"Invoice type"}
+                name={"Factura para"}
               />
             </div>
           </div>
@@ -100,6 +58,54 @@ export const Factura = () => {
                 name={"Serie"}
               />
             </div>
+
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].INVOICE_NO : ""}
+                name={"Numero de factura"}
+              />
+            </div>
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].INVOICE_DATE : ""}
+                name={"Fecha de factura"}
+              />
+            </div>
+          </div>
+          <div className="row pt-3">
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].INVOICE_TYPE : ""}
+                name={"Invoice type"}
+              />
+            </div>
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].CURRENCY : ""}
+                name={"Divisa"}
+              />
+            </div>
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].CURR_RATE : ""}
+                name={"Tipo de cambio"}
+              />
+            </div>
+          </div>
+          <div className="row pt-3">
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].GROSS_AMOUNT : ""}
+                name={"Imp bruto"}
+              />
+            </div>
+            <div className="col-4 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].NET_CURR_AMOUNT : ""}
+                name={"Imp neto"}
+              />
+            </div>
+
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].VAT_CURR_AMOUNT : ""}
@@ -113,30 +119,36 @@ export const Factura = () => {
           <div className="row pt-3">
             <div className="col-3 d-flex align-items-center justify-content-center">
               <Item
-                valor={factura && factura[0] ? factura[0].CURRENCY : ""}
-                name={"Divisa"}
-              />
-            </div>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].CURR_RATE : ""}
-                name={"Tipo de cambio"}
-              />
-            </div>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].GROSS_AMOUNT : ""}
-                name={"Imp bruto"}
-              />
-            </div>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <Item
                 valor={factura && factura[0] ? factura[0].IDENTITY : ""}
                 name={"Cliente"}
               />
             </div>
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].NAME : ""}
+                name={"Nombre"}
+              />
+            </div>
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].PARTY_TYPE : ""}
+                name={"Factura para"}
+              />
+            </div>
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].SERIES_ID : ""}
+                name={"Serie"}
+              />
+            </div>
           </div>
           <div className="row pt-3">
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].INVOICE_NO : ""}
+                name={"Numero de factura"}
+              />
+            </div>
             <div className="col-3 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].INVOICE_DATE : ""}
@@ -146,8 +158,29 @@ export const Factura = () => {
 
             <div className="col-3 d-flex align-items-center justify-content-center">
               <Item
-                valor={factura && factura[0] ? factura[0].INVOICE_NO : ""}
-                name={"Numero de factura"}
+                valor={factura && factura[0] ? factura[0].INVOICE_TYPE : ""}
+                name={"Invoice type"}
+              />
+            </div>
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].CURRENCY : ""}
+                name={"Divisa"}
+              />
+            </div>
+          </div>
+          <div className="row pt-3">
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].CURR_RATE : ""}
+                name={"Tipo de cambio"}
+              />
+            </div>
+
+            <div className="col-3 d-flex align-items-center justify-content-center">
+              <Item
+                valor={factura && factura[0] ? factura[0].GROSS_AMOUNT : ""}
+                name={"Imp bruto"}
               />
             </div>
             <div className="col-3 d-flex align-items-center justify-content-center">
@@ -156,26 +189,11 @@ export const Factura = () => {
                 name={"Imp neto"}
               />
             </div>
-
             <div className="col-3 d-flex align-items-center justify-content-center">
               <Item
-                valor={factura && factura[0] ? factura[0].PARTY_TYPE : ""}
-                name={"Party type"}
+                valor={factura && factura[0] ? factura[0].VAT_CURR_AMOUNT : ""}
+                name={"Impuesto"}
               />
-            </div>
-          </div>
-          <div className="row pt-3">
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <Item valor={"algo"} name={"invoice type"} />
-            </div>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <Item
-                valor={factura && factura[0] ? factura[0].SERIES_ID : ""}
-                name={"Serie"}
-              />
-            </div>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <Item valor={"algo"} name={"Impuesto"} />
             </div>
           </div>
         </form>
