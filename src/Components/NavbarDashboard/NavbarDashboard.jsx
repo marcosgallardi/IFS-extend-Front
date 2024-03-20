@@ -21,6 +21,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
   };
 
   const [inputFact, setInputFact] = useState(initialState);
+  const [showSearchingFilter, setShowSearchingFilter] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,12 +35,29 @@ export const NavbarDashboard = ({ close, factRender }) => {
   const onSubmitFact = async (e) => {
     e.preventDefault();
     try {
-      if (inputFact.series_id && inputFact.invoice_no) {
+      if (inputFact.series_id && inputFact.invoice_no && inputFact.identity) {
         let data = await dispatch(facturaAction(inputFact));
-
         await dispatch(ordenAction(data[0].IDENTITY));
+        return;
+      } else if (inputFact.series_id && inputFact.invoice_no) {
+        setShowSearchingFilter(true);
+        console.log("busqueda por N serie y factura");
+        return;
+      } else if (inputFact.invoice_no && inputFact.identity) {
+        setShowSearchingFilter(true);
+        console.log("busqueda por n factura y cliente");
+      } else if (inputFact.identity && inputFact.series_id) {
+        setShowSearchingFilter(true);
+        console.log("busqueda por cliente y serie");
+      } else if (inputFact.invoice_no) {
+        setShowSearchingFilter(true);
+        console.log("busqueda por n factura");
+        return;
+      } else if (inputFact.identity) {
+        setShowSearchingFilter(true);
+        console.log("busqueda por cliente");
       } else {
-        alert("Faltan datos por llenar");
+        alert("No puedes buscar solo por el numero de serie");
       }
     } catch (error) {
       console.log(error);
@@ -54,6 +72,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
     await logoutUser();
     navigate("/");
   };
+  console.log(showSearchingFilter);
 
   return (
     <>
@@ -103,7 +122,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true">
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title p-0" id="staticBackdropLabel">
@@ -143,6 +162,16 @@ export const NavbarDashboard = ({ close, factRender }) => {
                   value={inputFact.identity}
                   onChange={handleInputFact}
                 />
+                <br />
+                <label className="fs-5 fw-bold">Descripcion de cliente</label>
+                <input
+                  type="text"
+                  className={styles.inputLogin}
+                  name="invoice_no"
+                  value={inputFact.invoice_no}
+                  onChange={handleInputFact}
+                />
+                <br />
                 <div className="modal-footer">
                   <button
                     type="button"
@@ -153,7 +182,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
                   <button
                     type="submit"
                     className="btn btn-primary"
-                    data-bs-dismiss="modal">
+                    data-bs-dismiss="modal"
+                    data-bs-toggle="modal"
+                    data-bs-target={showSearchingFilter && "#exampleModal1"}>
                     Buscar
                   </button>
                 </div>
@@ -168,7 +199,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
@@ -191,6 +222,41 @@ export const NavbarDashboard = ({ close, factRender }) => {
                 data-bs-dismiss="modal"
                 aria-label="Close">
                 Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="modal fade"
+        id="exampleModal1"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                Resultado de la busqueda
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => setShowSearchingFilter(false)}></button>
+            </div>
+            <div className="modal-body">
+              Se encontraron {"1958"} facturas seleccion una
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onClick={() => setShowSearchingFilter(false)}>
+                Seleccionar
               </button>
             </div>
           </div>
