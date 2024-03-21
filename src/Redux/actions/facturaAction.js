@@ -6,13 +6,14 @@ export const facturaAction =
   ({ series_id, invoice_no, identity }) =>
   async (dispatch) => {
     try {
-   
       const { data } = await axios.get(
         `${server}/invoice?series_id=${series_id}&invoice_no=${invoice_no}&identity=${identity}`
       );
+      if (data.length <= 1) {
+        dispatch(getFactura(data));
 
-      dispatch(getFactura(data));
-      return data
+      }
+      return data;
     } catch (error) {
       console.log(error);
       throw new Error(error);

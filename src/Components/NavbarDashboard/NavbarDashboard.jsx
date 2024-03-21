@@ -35,29 +35,11 @@ export const NavbarDashboard = ({ close, factRender }) => {
   const onSubmitFact = async (e) => {
     e.preventDefault();
     try {
-      if (inputFact.series_id && inputFact.invoice_no && inputFact.identity) {
-        let data = await dispatch(facturaAction(inputFact));
-        await dispatch(ordenAction(data[0].IDENTITY));
-        return;
-      } else if (inputFact.series_id && inputFact.invoice_no) {
+      let data = await dispatch(facturaAction(inputFact));
+      await dispatch(ordenAction(data[0].IDENTITY));
+      console.log(data.length);
+      if (data.length > 1) {
         setShowSearchingFilter(true);
-        console.log("busqueda por N serie y factura");
-        return;
-      } else if (inputFact.invoice_no && inputFact.identity) {
-        setShowSearchingFilter(true);
-        console.log("busqueda por n factura y cliente");
-      } else if (inputFact.identity && inputFact.series_id) {
-        setShowSearchingFilter(true);
-        console.log("busqueda por cliente y serie");
-      } else if (inputFact.invoice_no) {
-        setShowSearchingFilter(true);
-        console.log("busqueda por n factura");
-        return;
-      } else if (inputFact.identity) {
-        setShowSearchingFilter(true);
-        console.log("busqueda por cliente");
-      } else {
-        alert("No puedes buscar solo por el numero de serie");
       }
     } catch (error) {
       console.log(error);
@@ -247,7 +229,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
                 onClick={() => setShowSearchingFilter(false)}></button>
             </div>
             <div className="modal-body">
-              Se encontraron {"1958"} facturas seleccion una
+              {data.map((item)=>{
+                
+              })}
             </div>
             <div className="modal-footer">
               <button
