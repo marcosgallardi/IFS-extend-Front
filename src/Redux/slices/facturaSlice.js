@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  facturaActual: {},
+  facturaActual: [{}],
 };
 
 const facturaSlice = createSlice({
@@ -9,6 +9,7 @@ const facturaSlice = createSlice({
   initialState,
   reducers: {
     getFactura: (state, { payload }) => {
+      console.log(payload,"log del payloooood")
       state.facturaActual = payload;
     },
   },

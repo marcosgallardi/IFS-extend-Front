@@ -4,8 +4,7 @@ import { BsFillFloppy2Fill } from "react-icons/bs";
 import { IoIosExit } from "react-icons/io";
 import { useState } from "react";
 import { facturaAction } from "../../Redux/actions/facturaAction";
-import { getToOrder } from "../../Helpers/getToOrder";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ordenAction } from "../../Redux/actions/ordenAction";
 import { allowAction } from "../../Redux/actions/allowAction";
 import { useNavigate } from "react-router-dom";
@@ -14,11 +13,14 @@ import { logoutUser } from "../../Helpers/logoutUser";
 export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
 
+  const { facturaActual } = useSelector((state) => state.factura);
+
   let initialState = {
     series_id: "",
     invoice_no: "",
     identity: "",
   };
+  console.log(facturaActual.length)
 
   const [inputFact, setInputFact] = useState(initialState);
   const [showSearchingFilter, setShowSearchingFilter] = useState(false);
@@ -37,7 +39,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
     try {
       let data = await dispatch(facturaAction(inputFact));
       await dispatch(ordenAction(data[0].IDENTITY));
-      console.log(data.length);
+
       if (data.length > 1) {
         setShowSearchingFilter(true);
       }
@@ -54,7 +56,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
     await logoutUser();
     navigate("/");
   };
-  console.log(showSearchingFilter);
 
   return (
     <>
@@ -214,8 +215,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
         id="exampleModal1"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered">
+        aria-hidden="true"
+        style={{ width: "100%" }}>
+        <div className="modal-dialog modal-xl modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
@@ -229,9 +231,32 @@ export const NavbarDashboard = ({ close, factRender }) => {
                 onClick={() => setShowSearchingFilter(false)}></button>
             </div>
             <div className="modal-body">
-              {data.map((item)=>{
-                
-              })}
+              <table className={styles.excelTable}>
+                <thead>
+                  <tr></tr>
+                </thead>
+                <tbody>
+                  {facturaActual &&
+                    facturaActual.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        <td>{row.COMPANY} </td>
+                        <td>{row.IDENTITY} </td>
+                        <td>{row.NAME} </td>
+                        <td>{row.CURRENCY} </td>
+                        <td>{row.CURR_RATE} </td>
+                        <td>{row.GROSS_AMOUNT} </td>
+                        <td>{row.INVOICE_DATE} </td>
+                        <td>{row.INVOICE_ID} </td>
+                        <td>{row.INVOICE_NO} </td>
+                        <td>{row.INVOICE_TYPE} </td>
+                        <td>{row.NET_CURR_AMOUNT} </td>
+                        <td>{row.PARTY_TYPE} </td>
+                        <td>{row.SERIES_ID} </td>
+                        <td>{row.VAT_CURR_AMOUNT} </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
             <div className="modal-footer">
               <button

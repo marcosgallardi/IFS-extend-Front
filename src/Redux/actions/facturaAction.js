@@ -9,10 +9,10 @@ export const facturaAction =
       const { data } = await axios.get(
         `${server}/invoice?series_id=${series_id}&invoice_no=${invoice_no}&identity=${identity}`
       );
-      if (data.length <= 1) {
-        dispatch(getFactura(data));
 
-      }
+      await dispatch(getFactura(data));
+
+      console.log(data, "log de la data de la accion");
       return data;
     } catch (error) {
       console.log(error);

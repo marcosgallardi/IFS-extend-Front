@@ -127,3 +127,24 @@
 .inputLogin:focus {
   border-color: #0c3e62;
 }
+
+.excelTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.excelTable th,
+.excelTable td {
+  border: 1px solid #ddd;
+  padding: 2px;
+  text-align: center;
+}
+
+.excelTable td {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.excelTable th {
+  background-color: #f2f2f2;
+}
