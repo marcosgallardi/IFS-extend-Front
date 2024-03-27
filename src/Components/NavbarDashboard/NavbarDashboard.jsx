@@ -20,7 +20,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
     invoice_no: "",
     identity: "",
   };
-  console.log(facturaActual.length)
+  console.log(facturaActual.length);
 
   const [inputFact, setInputFact] = useState(initialState);
   const [showSearchingFilter, setShowSearchingFilter] = useState(false);
@@ -42,6 +42,8 @@ export const NavbarDashboard = ({ close, factRender }) => {
 
       if (data.length > 1) {
         setShowSearchingFilter(true);
+      }else{
+        
       }
     } catch (error) {
       console.log(error);
@@ -55,6 +57,11 @@ export const NavbarDashboard = ({ close, factRender }) => {
   const onLogoutClick = async () => {
     await logoutUser();
     navigate("/");
+  };
+
+  const handleFilterSearch = (rowSelected) => {
+    console.log(rowSelected, "looog de la seleccion");
+    setShowSearchingFilter(false);
   };
 
   return (
@@ -232,41 +239,56 @@ export const NavbarDashboard = ({ close, factRender }) => {
             </div>
             <div className="modal-body">
               <table className={styles.excelTable}>
-                <thead>
-                  <tr></tr>
+                <thead className={styles.borderTab}>
+                  <tr>
+                    <td>Cliente</td>
+                    <td>Divisa</td>
+                    <td>Serie</td>
+                    <td>N° Factura</td>
+                    <td>Fecha</td>
+                    <td>Id Factura </td>
+                    <td>Imp Bruto</td>
+                    <td>Impuesto</td>
+                  </tr>
                 </thead>
                 <tbody>
                   {facturaActual &&
                     facturaActual.map((row, rowIndex) => (
                       <tr key={rowIndex}>
-                        <td>{row.COMPANY} </td>
                         <td>{row.IDENTITY} </td>
-                        <td>{row.NAME} </td>
                         <td>{row.CURRENCY} </td>
-                        <td>{row.CURR_RATE} </td>
-                        <td>{row.GROSS_AMOUNT} </td>
+                        <td>{row.SERIES_ID} </td>
+                        <td>{row.INVOICE_NO} </td>
                         <td>{row.INVOICE_DATE} </td>
                         <td>{row.INVOICE_ID} </td>
-                        <td>{row.INVOICE_NO} </td>
-                        <td>{row.INVOICE_TYPE} </td>
                         <td>{row.NET_CURR_AMOUNT} </td>
-                        <td>{row.PARTY_TYPE} </td>
-                        <td>{row.SERIES_ID} </td>
                         <td>{row.VAT_CURR_AMOUNT} </td>
+                        <td>{row.GROSS_AMOUNT} </td>
+                        <td>{row.CURR_RATE} </td>
+                        <td>
+                          <button
+                            onClick={() => handleFilterSearch(row)}
+                            className={styles.buttonSelect}
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                            Seleccionar
+                          </button>
+                        </td>
                       </tr>
                     ))}
                 </tbody>
               </table>
             </div>
             <div className="modal-footer">
+              <h6 className="pe-3 fs-5 py-2">
+                Seleccione una factura para continuar o cierre esta ventana.
+              </h6>
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => setShowSearchingFilter(false)}>
-                Seleccionar
-              </button>
+                onClick={() => setShowSearchingFilter(false)}></button>
             </div>
           </div>
         </div>
