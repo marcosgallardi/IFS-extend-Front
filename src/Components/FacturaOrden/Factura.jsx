@@ -22,8 +22,12 @@ export const Factura = () => {
   const [factura, setFactura] = useState(false);
   const { facturaActual } = useSelector((state) => state.factura);
 
+  
+
   useEffect(() => {
-    setFactura(facturaActual ? facturaActual : initialState);
+    setFactura(
+      facturaActual && facturaActual.length <= 1 ? facturaActual : initialState
+    );
   }, [facturaActual]);
 
   return (

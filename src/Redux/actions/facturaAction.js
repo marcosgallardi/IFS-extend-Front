@@ -12,7 +12,6 @@ export const facturaAction =
 
       await dispatch(getFactura(data));
 
-      console.log(data, "log de la data de la accion");
       return data;
     } catch (error) {
       console.log(error);

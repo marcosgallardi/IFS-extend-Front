@@ -9,7 +9,7 @@ const facturaSlice = createSlice({
   initialState,
   reducers: {
     getFactura: (state, { payload }) => {
-      console.log(payload,"log del payloooood")
+
       state.facturaActual = payload;
     },
   },

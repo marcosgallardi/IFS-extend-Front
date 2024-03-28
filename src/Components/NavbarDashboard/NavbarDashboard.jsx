@@ -9,6 +9,7 @@ import { ordenAction } from "../../Redux/actions/ordenAction";
 import { allowAction } from "../../Redux/actions/allowAction";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Helpers/logoutUser";
+import { getFactura } from "../../Redux/slices/facturaSlice";
 
 export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
@@ -20,11 +21,10 @@ export const NavbarDashboard = ({ close, factRender }) => {
     invoice_no: "",
     identity: "",
   };
-  console.log(facturaActual.length);
 
   const [inputFact, setInputFact] = useState(initialState);
-  const [showSearchingFilter, setShowSearchingFilter] = useState(false);
-
+  const [showSearchingFilter, setShowSearchingFilter] = useState(true);
+  console.log(showSearchingFilter, "acaaaaaaaaaaaaaaaaaaaaaaaaaa");
   const navigate = useNavigate();
 
   const handleInputFact = ({ target }) => {
@@ -38,12 +38,13 @@ export const NavbarDashboard = ({ close, factRender }) => {
     e.preventDefault();
     try {
       let data = await dispatch(facturaAction(inputFact));
-      await dispatch(ordenAction(data[0].IDENTITY));
+      if (data.length <= 1) {
+        await dispatch(ordenAction(data[0].IDENTITY));
+      }
 
-      if (data.length > 1) {
+      if (data.length >= 1) {
         setShowSearchingFilter(true);
-      }else{
-        
+      } else {
       }
     } catch (error) {
       console.log(error);
@@ -59,8 +60,10 @@ export const NavbarDashboard = ({ close, factRender }) => {
     navigate("/");
   };
 
-  const handleFilterSearch = (rowSelected) => {
-    console.log(rowSelected, "looog de la seleccion");
+  const handleFilterSearch = async (rowSelected) => {
+    console.log(rowSelected);
+    await dispatch(getFactura([rowSelected]));
+    await dispatch(ordenAction(rowSelected.IDENTITY));
     setShowSearchingFilter(false);
   };
 
@@ -72,7 +75,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
             <span
               type="button"
               data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop">
+              data-bs-target="#staticBackdrop"
+              onClick={() => setShowSearchingFilter(true)}>
+                
               <PiMagnifyingGlassDuotone
                 className={!close ? styles.icon : styles.icon2}
               />
