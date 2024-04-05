@@ -3,7 +3,6 @@ import { server } from "../../Helpers/pathServers";
 import { setOrden } from "../slices/ordenSlice";
 
 export const ordenAction = (cliente) => async (dispatch) => {
-  
   try {
     const { data } = await axios.get(`${server}/order?cliente=${cliente}`);
 

@@ -20,11 +20,12 @@ export const NavbarDashboard = ({ close, factRender }) => {
     series_id: "",
     invoice_no: "",
     identity: "",
+    name: "",
   };
 
   const [inputFact, setInputFact] = useState(initialState);
   const [showSearchingFilter, setShowSearchingFilter] = useState(true);
-  console.log(showSearchingFilter, "acaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
   const navigate = useNavigate();
 
   const handleInputFact = ({ target }) => {
@@ -61,7 +62,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
   };
 
   const handleFilterSearch = async (rowSelected) => {
-    console.log(rowSelected);
     await dispatch(getFactura([rowSelected]));
     await dispatch(ordenAction(rowSelected.IDENTITY));
     setShowSearchingFilter(false);
@@ -77,7 +77,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
               onClick={() => setShowSearchingFilter(true)}>
-                
               <PiMagnifyingGlassDuotone
                 className={!close ? styles.icon : styles.icon2}
               />
@@ -162,8 +161,8 @@ export const NavbarDashboard = ({ close, factRender }) => {
                 <input
                   type="text"
                   className={styles.inputLogin}
-                  name="invoice_no"
-                  value={inputFact.invoice_no}
+                  name="name"
+                  value={inputFact.name}
                   onChange={handleInputFact}
                 />
                 <br />

@@ -139,3 +139,7 @@
   padding: 10px 15px;
   transition: background-color 0.2s;
 }
+.positionTextNoSearch {
+  padding-top: 5rem;
+  padding-left: 3rem;
+}

@@ -100,88 +100,103 @@ export const TablaOrden = ({ data }) => {
 
   return (
     <>
-      {orden && !isCollapse ? (
+      {orden && orden.length === 0 ? (
         <div className={style.tableContainer}>
-          <table className={style.excelTable}>
-            <thead>
-              <tr>
-                {headers.map((header, index) => (
-                  <th key={index} className="fs-6 ">
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {orden &&
-                orden.map((row, rowIndex) => (
-                  <tr key={rowIndex}>
-                    <td>
-                      <input
-                        type="number"
-                        name={orden[rowIndex]}
-                        value={conciliatedValues[rowIndex]?.value || ""}
-                        onChange={(e) =>
-                          onChangeConciliar(e, rowIndex, orden[rowIndex])
-                        }
-                        className={style.inputStylesNone}
-                      />
-                    </td>
-                    <td>
-                      <button
-                        className={style.buttonObs}
-                        data-bs-toggle="modal"
-                        data-bs-target={`#exampleModal2${rowIndex}`}
-                        data-bs-whatever="@getbootstrap">
-                        Nota
-                      </button>
-                      <ObservationMod id={rowIndex} name={orden[rowIndex]} />
-                    </td>
-                    {row.map((cell, cellIndex) => (
-                      <td key={cellIndex}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-      ) : isCollapse && orden ? (
-        <div className={style.tableContainer1}>
-          <table className={style.excelTable}>
-            <thead>
-              <tr>
-                {headers.map((header, index) => (
-                  <th key={index} className="fs-6 ">
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {orden &&
-                orden.map((row, rowIndex) => (
-                  <tr key={rowIndex}>
-                    <td>
-                      <input
-                        type="number"
-                        name={orden[rowIndex]}
-                        value={conciliatedValues[rowIndex]?.value || ""}
-                        onChange={(e) => onChangeConciliar(e, rowIndex)}
-                        className={style.inputStylesNone}
-                      />
-                    </td>
-                    {row.map((cell, cellIndex) => (
-                      <td key={cellIndex}>{cell}</td>
-                    ))}
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+          <div className={style.positionTextNoSearch}>
+            <h3>No se encotraron ordenes para ese cliente</h3>
+          </div>
         </div>
       ) : (
-        <div className={style.containerMessageOrder}>
-          <p className={style.messageOrder}>Realiza una busqueda de factura!</p>
-        </div>
+        <>
+          {orden && !isCollapse ? (
+            <div className={style.tableContainer}>
+              <table className={style.excelTable}>
+                <thead>
+                  <tr>
+                    {headers.map((header, index) => (
+                      <th key={index} className="fs-6 ">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {orden &&
+                    orden.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        <td>
+                          <input
+                            type="number"
+                            name={orden[rowIndex]}
+                            value={conciliatedValues[rowIndex]?.value || ""}
+                            onChange={(e) =>
+                              onChangeConciliar(e, rowIndex, orden[rowIndex])
+                            }
+                            className={style.inputStylesNone}
+                          />
+                        </td>
+                        <td>
+                          <button
+                            className={style.buttonObs}
+                            data-bs-toggle="modal"
+                            data-bs-target={`#exampleModal2${rowIndex}`}
+                            data-bs-whatever="@getbootstrap">
+                            Nota
+                          </button>
+                          <ObservationMod
+                            id={rowIndex}
+                            name={orden[rowIndex]}
+                          />
+                        </td>
+                        {row.map((cell, cellIndex) => (
+                          <td key={cellIndex}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          ) : isCollapse && orden ? (
+            <div className={style.tableContainer1}>
+              <table className={style.excelTable}>
+                <thead>
+                  <tr>
+                    {headers.map((header, index) => (
+                      <th key={index} className="fs-6 ">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {orden &&
+                    orden.map((row, rowIndex) => (
+                      <tr key={rowIndex}>
+                        <td>
+                          <input
+                            type="number"
+                            name={orden[rowIndex]}
+                            value={conciliatedValues[rowIndex]?.value || ""}
+                            onChange={(e) => onChangeConciliar(e, rowIndex)}
+                            className={style.inputStylesNone}
+                          />
+                        </td>
+                        {row.map((cell, cellIndex) => (
+                          <td key={cellIndex}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className={style.containerMessageOrder}>
+              <p className={style.messageOrder}>
+                Realiza una busqueda de factura!
+              </p>
+            </div>
+          )}
+        </>
       )}
     </>
   );

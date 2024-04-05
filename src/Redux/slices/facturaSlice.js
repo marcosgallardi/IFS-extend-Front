@@ -9,7 +9,6 @@ const facturaSlice = createSlice({
   initialState,
   reducers: {
     getFactura: (state, { payload }) => {
-
       state.facturaActual = payload;
     },
   },
