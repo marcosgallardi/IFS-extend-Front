@@ -143,3 +143,35 @@
   padding-top: 5rem;
   padding-left: 3rem;
 }
+
+.buttonSelect {
+  background-color: #0c3e62;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  margin: 5rem;
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+}
+.buttonSelect1 {
+  background-color: #0c3e62;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+}
+
+.buttonSelect:hover {
+  background-color: #0c3e62c2;
+}
+.buttonSelect1:hover {
+  background-color: #0c3e62c2;
+}

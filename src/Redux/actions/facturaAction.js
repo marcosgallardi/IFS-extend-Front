@@ -3,7 +3,7 @@ import axios from "axios";
 import { getFactura } from "../slices/facturaSlice";
 
 export const facturaAction =
-  ({ series_id, invoice_no, identity,name }) =>
+  ({ series_id, invoice_no, identity, name }) =>
   async (dispatch) => {
     try {
       const { data } = await axios.get(

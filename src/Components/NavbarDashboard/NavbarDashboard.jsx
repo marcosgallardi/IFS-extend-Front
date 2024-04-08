@@ -41,10 +41,12 @@ export const NavbarDashboard = ({ close, factRender }) => {
       let data = await dispatch(facturaAction(inputFact));
       if (data.length <= 1) {
         await dispatch(ordenAction(data[0].IDENTITY));
+        setInputFact(...initialState);
       }
 
       if (data.length >= 1) {
         setShowSearchingFilter(true);
+        setInputFact(...initialState);
       } else {
       }
     } catch (error) {
@@ -253,6 +255,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
                     <td>Id Factura </td>
                     <td>Imp Bruto</td>
                     <td>Impuesto</td>
+                    <td>Tipo de cambio</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -267,7 +270,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
                         <td>{row.INVOICE_ID} </td>
                         <td>{row.NET_CURR_AMOUNT} </td>
                         <td>{row.VAT_CURR_AMOUNT} </td>
-                        <td>{row.GROSS_AMOUNT} </td>
                         <td>{row.CURR_RATE} </td>
                         <td>
                           <button
