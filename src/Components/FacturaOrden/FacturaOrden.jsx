@@ -1,9 +1,29 @@
 import style from "./FacturaOrden.module.css";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Factura } from "./Factura";
 import { Orden } from "./Orden";
+import { useState } from "react";
+import { filterOrden } from "../../Redux/actions/filterOrdenSlice";
 
 export const FacturaOrden = () => {
+  let { orden } = useSelector((state) => state.orden);
+  const dispatch = useDispatch();
+
+  const [ordenNo, setOrdenNo] = useState("");
+
+  const onHandleChangeOrden = ({ target }) => {
+    setOrdenNo(target.value);
+  };
+
+  console.log(orden)
+
+  const orderFilter = orden.filter((orden) => orden.ORDER_NO === ordenNo);
+
+  const onSubmitOrden = (e) => {
+    e.preventDefault();
+    dispatch(filterOrden(orderFilter));
+  };
+
   return (
     <div>
       <div className={style.containerFact}>
@@ -12,19 +32,23 @@ export const FacturaOrden = () => {
       <Factura />
       <div className={style.containerFact2}>
         <h3 className="pt-2">Ordenes de ventas:</h3>
-        <button
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal11"
-          className={style.buttonSelect}>
-          Filtrar Ordenes
-        </button>
+        {orden && (
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal11"
+            className={style.buttonSelect}>
+            Filtrar Ordenes
+          </button>
+        )}
         <div
           className="modal fade"
           id="exampleModal11"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true">
-          <div className="modal-dialog  modal-dialog-centered">
+          <form
+            className="modal-dialog  modal-dialog-centered"
+            onSubmit={onSubmitOrden}>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title p-0" id="exampleModalLabel">
@@ -36,10 +60,17 @@ export const FacturaOrden = () => {
                   data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
-              <div className="modal-body"></div>
+              <div className="modal-body">
+                <label htmlFor="">Orden No</label>
+                <input
+                  type="number"
+                  value={ordenNo}
+                  onChange={onHandleChangeOrden}
+                />
+              </div>
               <div className="modal-footer">
                 <button
-                  type="button"
+                  type="submit"
                   className={style.buttonSelect1}
                   data-bs-dismiss="modal"
                   aria-label="Close">
@@ -47,10 +78,10 @@ export const FacturaOrden = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-      <Orden />
+      <Orden orden={orden} />
     </div>
   );
 };

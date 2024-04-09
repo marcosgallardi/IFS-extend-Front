@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   orden: null,
+ 
 };
 
 const ordenSlice = createSlice({
@@ -11,10 +12,12 @@ const ordenSlice = createSlice({
     setOrden: (state, { payload }) => {
       state.orden = payload;
     },
+    setOrdenFiltered: (state, { payload }) => {
+      state.orden = payload;
+    },
   },
 });
 
-
-export const { setOrden } = ordenSlice.actions;
+export const { setOrden, setOrdenFiltered } = ordenSlice.actions;
 
 export default ordenSlice.reducer;
