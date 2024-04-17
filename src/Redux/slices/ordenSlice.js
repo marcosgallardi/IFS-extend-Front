@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   orden: null,
- 
 };
 
 const ordenSlice = createSlice({

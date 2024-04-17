@@ -15,9 +15,9 @@ export const FacturaOrden = () => {
     setOrdenNo(target.value);
   };
 
-  console.log(orden)
 
-  const orderFilter = orden.filter((orden) => orden.ORDER_NO === ordenNo);
+
+  const orderFilter = orden?.filter((orden) => orden.ORDER_NO === ordenNo);
 
   const onSubmitOrden = (e) => {
     e.preventDefault();

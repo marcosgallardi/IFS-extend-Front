@@ -11,13 +11,19 @@ import { ordenAction } from "../../Redux/actions/ordenAction";
 export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
   const { allow } = useSelector((state) => state.allowConciliationSlice);
+  const { facturaActual } = useSelector((state) => state.factura);
 
   const dispatch = useDispatch();
 
   const [orden, setOrden] = useState("");
 
-  const [conciliatedValues, setConciliatedValues] = useState({});
-
+  const [conciliatedValues, setConciliatedValues] = useState({
+    SERIES_ID: facturaActual[0].SERIES_ID,
+    INVOICE_NO: facturaActual[0].INVOICE_NO,
+    IDENTITY: facturaActual[0].IDENTITY,
+  });
+  
+  console.log(conciliatedValues);
   let headers = [
     "A_Conciliar",
     "Observaciones",
@@ -87,13 +93,15 @@ export const TablaOrden = ({ data }) => {
     let aux = name.split(",");
 
     setConciliatedValues((prevValues) => ({
-      ...prevValues,
       [rowIndex]: {
         value: Number(value),
         order_no: aux[0],
         line_no: aux[1],
         rel_no: aux[2],
         line_item_no: aux[11],
+        SERIES_ID: facturaActual[0].SERIES_ID,
+    INVOICE_NO: facturaActual[0].INVOICE_NO,
+    IDENTITY: facturaActual[0].IDENTITY,
       },
     }));
   };
