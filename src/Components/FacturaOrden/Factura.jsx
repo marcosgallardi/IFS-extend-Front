@@ -100,13 +100,13 @@ export const Factura = () => {
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].GROSS_AMOUNT : ""}
-                name={"Imp bruto"}
+                name={"Con Imp bruto"}
               />
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].NET_CURR_AMOUNT : ""}
-                name={"Imp neto"}
+                name={"Con Imp neto"}
               />
             </div>
 
