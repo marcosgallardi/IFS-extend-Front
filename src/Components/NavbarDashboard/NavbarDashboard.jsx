@@ -16,6 +16,8 @@ export const NavbarDashboard = ({ close, factRender }) => {
 
   const { facturaActual } = useSelector((state) => state.factura);
 
+console.log(facturaActual,"acaaaaaa")
+
   let initialState = {
     series_id: "",
     invoice_no: "",
@@ -39,12 +41,12 @@ export const NavbarDashboard = ({ close, factRender }) => {
     e.preventDefault();
     try {
       let data = await dispatch(facturaAction(inputFact));
-      if (data.length <= 1) {
+      if (data.length < 1) {
         await dispatch(ordenAction(data[0].IDENTITY));
         setInputFact(...initialState);
       }
 
-      if (data.length >= 1) {
+      if (data.length > 1) {
         setShowSearchingFilter(true);
         setInputFact(...initialState);
       } else {
