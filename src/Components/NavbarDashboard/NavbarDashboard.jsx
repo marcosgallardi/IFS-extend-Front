@@ -16,7 +16,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
 
   const { facturaActual } = useSelector((state) => state.factura);
 
-console.log(facturaActual,"acaaaaaa")
+  console.log(facturaActual, "acaaaaaa");
 
   let initialState = {
     series_id: "",
@@ -41,7 +41,8 @@ console.log(facturaActual,"acaaaaaa")
     e.preventDefault();
     try {
       let data = await dispatch(facturaAction(inputFact));
-      if (data.length < 1) {
+      if (data.length === 1) {
+    
         await dispatch(ordenAction(data[0].IDENTITY));
         setInputFact(...initialState);
       }
@@ -262,7 +263,7 @@ console.log(facturaActual,"acaaaaaa")
                 </thead>
                 <tbody>
                   {facturaActual &&
-                    facturaActual.map((row, rowIndex) => (
+                    facturaActual?.map((row, rowIndex) => (
                       <tr key={rowIndex}>
                         <td>{row.IDENTITY} </td>
                         <td>{row.CURRENCY} </td>
