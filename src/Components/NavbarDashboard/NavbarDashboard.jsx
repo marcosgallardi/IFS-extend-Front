@@ -41,8 +41,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
     e.preventDefault();
     try {
       let data = await dispatch(facturaAction(inputFact));
+      if (data === "Faltan datos") return alert("Faltan datos");
+      if (data.length === 0) return alert("datos incorrecto");
       if (data.length === 1) {
-    
         await dispatch(ordenAction(data[0].IDENTITY));
         setInputFact(...initialState);
       }
@@ -263,6 +264,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
                 </thead>
                 <tbody>
                   {facturaActual &&
+                    facturaActual !== "Faltan datos" &&
                     facturaActual?.map((row, rowIndex) => (
                       <tr key={rowIndex}>
                         <td>{row.IDENTITY} </td>
