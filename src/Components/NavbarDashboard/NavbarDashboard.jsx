@@ -16,7 +16,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
 
   const { facturaActual } = useSelector((state) => state.factura);
 
-  console.log(facturaActual, "acaaaaaa");
+ 
 
   let initialState = {
     series_id: "",

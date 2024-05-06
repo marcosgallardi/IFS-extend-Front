@@ -23,7 +23,6 @@ export const TablaOrden = ({ data }) => {
     IDENTITY: facturaActual[0]?.IDENTITY,
   });
 
-  console.log(conciliatedValues);
   let headers = [
     "A_Conciliar",
     "Observaciones",
@@ -92,8 +91,6 @@ export const TablaOrden = ({ data }) => {
     }
     let aux = name.split(",");
 
-    console.log(facturaActual[0].SERIES_ID);
-
     setConciliatedValues(() => ({
       [rowIndex]: {
         value: Number(value),
@@ -101,6 +98,12 @@ export const TablaOrden = ({ data }) => {
         line_no: aux[1],
         rel_no: aux[2],
         line_item_no: aux[11],
+        catalog_no: aux[3],
+        contract: aux[4],
+        part_no: aux[5],
+        buy_qty_due: aux[6],
+        sales_unit_meas: aux[7],
+        sale_unit_price: aux[8],
         series_id: facturaActual[0].SERIES_ID,
         invoice_no: facturaActual[0].INVOICE_NO,
         identity: facturaActual[0].IDENTITY,
