@@ -90,7 +90,7 @@ export const TablaOrden = ({ data }) => {
       return;
     }
     let aux = name.split(",");
-
+   
     setConciliatedValues(() => ({
       [rowIndex]: {
         value: Number(value),
@@ -101,12 +101,21 @@ export const TablaOrden = ({ data }) => {
         catalog_no: aux[3],
         contract: aux[4],
         part_no: aux[5],
-        buy_qty_due: aux[6],
+        buy_qty_due: Number(aux[6]),
         sales_unit_meas: aux[7],
-        sale_unit_price: aux[8],
-        series_id: facturaActual[0].SERIES_ID,
-        invoice_no: facturaActual[0].INVOICE_NO,
-        identity: facturaActual[0].IDENTITY,
+        sale_unit_price: Number(aux[8]),
+        series_id: facturaActual[0]?.SERIES_ID,
+        invoice_no: facturaActual[0]?.INVOICE_NO,
+        identity: facturaActual[0]?.IDENTITY,
+        currency: facturaActual[0]?.currency,
+        company: facturaActual[0]?.company,
+        curr_rate: facturaActual[0]?.curr_rate,
+        net_curr_amount: facturaActual[0]?.net_curr_amount,
+        vat_curr_amount: facturaActual[0]?.vat_curr_amount,
+        gross_amount: facturaActual[0]?.gross_amount,
+        invoice_type: facturaActual[0]?.invoice_type,
+        invoice_date: facturaActual[0]?.invoice_date,
+        invoice_id: facturaActual[0]?.invoice_id,
       },
     }));
   };
