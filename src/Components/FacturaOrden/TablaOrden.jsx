@@ -23,6 +23,8 @@ export const TablaOrden = ({ data }) => {
     IDENTITY: facturaActual[0]?.IDENTITY,
   });
 
+console.log(conciliatedValues)
+
   let headers = [
     "A_Conciliar",
     "Observaciones",
@@ -90,7 +92,7 @@ export const TablaOrden = ({ data }) => {
       return;
     }
     let aux = name.split(",");
-   
+
     setConciliatedValues(() => ({
       [rowIndex]: {
         value: Number(value),
@@ -107,15 +109,15 @@ export const TablaOrden = ({ data }) => {
         series_id: facturaActual[0]?.SERIES_ID,
         invoice_no: facturaActual[0]?.INVOICE_NO,
         identity: facturaActual[0]?.IDENTITY,
-        currency: facturaActual[0]?.currency,
-        company: facturaActual[0]?.company,
-        curr_rate: facturaActual[0]?.curr_rate,
-        net_curr_amount: facturaActual[0]?.net_curr_amount,
-        vat_curr_amount: facturaActual[0]?.vat_curr_amount,
-        gross_amount: facturaActual[0]?.gross_amount,
-        invoice_type: facturaActual[0]?.invoice_type,
-        invoice_date: facturaActual[0]?.invoice_date,
-        invoice_id: facturaActual[0]?.invoice_id,
+        currency: facturaActual[0]?.CURRENCY,
+        company: facturaActual[0]?.COMPANY,
+        curr_rate: facturaActual[0]?.CURR_RATE,
+        net_curr_amount: facturaActual[0]?.NET_CURR_AMOUNT,
+        vat_curr_amount: facturaActual[0]?.VAT_CURR_AMOUNT,
+        gross_amount: facturaActual[0]?.GROSS_AMOUNT,
+        invoice_type: facturaActual[0]?.INVOICE_TYPE,
+        invoice_date: facturaActual[0]?.INVOICE_DATE,
+        invoice_id: facturaActual[0]?.INVOICE_ID,
       },
     }));
   };
