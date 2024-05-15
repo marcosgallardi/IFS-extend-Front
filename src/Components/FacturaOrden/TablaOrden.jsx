@@ -116,7 +116,6 @@ console.log(conciliatedValues)
         vat_curr_amount: facturaActual[0]?.VAT_CURR_AMOUNT,
         gross_amount: facturaActual[0]?.GROSS_AMOUNT,
         invoice_type: facturaActual[0]?.INVOICE_TYPE,
-        invoice_date: facturaActual[0]?.INVOICE_DATE,
         invoice_id: facturaActual[0]?.INVOICE_ID,
       },
     }));
