@@ -15,7 +15,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
 
   const { facturaActual } = useSelector((state) => state.factura);
-  console.log(facturaActual);
 
   let initialState = {
     series_id: "",
@@ -25,7 +24,8 @@ export const NavbarDashboard = ({ close, factRender }) => {
   };
 
   const [inputFact, setInputFact] = useState(initialState);
-  const [showSearchingFilter, setShowSearchingFilter] = useState(true);
+  const [showSearchingFilter, setShowSearchingFilter] = useState(false);
+  console.log(showSearchingFilter);
 
   const navigate = useNavigate();
 
@@ -44,13 +44,14 @@ export const NavbarDashboard = ({ close, factRender }) => {
       if (data.length === 0) return alert("datos incorrecto");
       if (data.length === 1) {
         await dispatch(ordenAction(data[0].IDENTITY));
-        setInputFact(...initialState);
+        setInputFact(initialState);
       }
-
+      console.log(data.length, "acaaaaaaaaaaa");
       if (data.length > 1) {
         setShowSearchingFilter(true);
-        setInputFact(...initialState);
+        setInputFact(initialState);
       } else {
+        setShowSearchingFilter(false);
       }
     } catch (error) {
       console.log(error);
@@ -80,8 +81,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
             <span
               type="button"
               data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-              onClick={() => setShowSearchingFilter(true)}>
+              data-bs-target="#staticBackdrop">
               <PiMagnifyingGlassDuotone
                 className={!close ? styles.icon : styles.icon2}
               />
@@ -183,7 +183,9 @@ export const NavbarDashboard = ({ close, factRender }) => {
                     className="btn btn-primary"
                     data-bs-dismiss="modal"
                     data-bs-toggle="modal"
-                    data-bs-target={showSearchingFilter && "#exampleModal1"}>
+                    data-bs-target={
+                      showSearchingFilter && "#exampleModal1" 
+                    }>
                     Buscar
                   </button>
                 </div>

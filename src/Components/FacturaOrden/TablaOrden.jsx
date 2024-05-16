@@ -23,7 +23,7 @@ export const TablaOrden = ({ data }) => {
     IDENTITY: facturaActual[0]?.IDENTITY,
   });
 
-console.log(conciliatedValues)
+
 
   let headers = [
     "A_Conciliar",
