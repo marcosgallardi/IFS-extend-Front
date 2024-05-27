@@ -56,6 +56,7 @@ export const TablaOrden = ({ data }) => {
             await postConciliation(conciliatedValues);
             await dispatch(ordenAction(data[0][10]));
             setConciliatedValues({});
+            dispatch(allowAction(false))
           };
           execute();
         } catch (error) {
