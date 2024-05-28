@@ -24,7 +24,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
   };
 
   const [inputFact, setInputFact] = useState(initialState);
-  const [showSearchingFilter, setShowSearchingFilter] = useState(false);
 
   const [openModal, setOpenModal] = useState("#exampleModal123");
   console.log(openModal);
@@ -57,8 +56,15 @@ export const NavbarDashboard = ({ close, factRender }) => {
     }
   };
 
-  const handleSaveConciliation = () => {
-    dispatch(allowAction(true));
+  const handleSaveConciliation = async () => {
+    dispatch(await allowAction(true));
+    dispatch(
+      await facturaAction({
+        series_id: facturaActual[0].SERIES_ID,
+        invoice_no: facturaActual[0].INVOICE_NO,
+        identity: facturaActual[0].IDENTITY,
+      })
+    );
   };
 
   const onLogoutClick = async () => {
@@ -277,7 +283,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
                             <button
                               onClick={() => {
                                 handleFilterSearch(row);
-                              
                               }}
                               className={styles.buttonSelect}
                               data-bs-dismiss="modal"
@@ -298,8 +303,7 @@ export const NavbarDashboard = ({ close, factRender }) => {
                   type="button"
                   className="btn-close"
                   data-bs-dismiss="modal"
-                  aria-label="Close"
-                 ></button>
+                  aria-label="Close"></button>
               </div>
             </div>
           </div>

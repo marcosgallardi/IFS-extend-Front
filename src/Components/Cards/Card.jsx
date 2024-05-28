@@ -1,7 +1,7 @@
 import style from "./Card.module.css";
 
 export const Card = ({ image, size }) => {
-  console.log(size)
+  
   return (
     <>
       <img

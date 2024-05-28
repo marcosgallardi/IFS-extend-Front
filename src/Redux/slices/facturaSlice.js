@@ -9,7 +9,15 @@ const facturaSlice = createSlice({
   initialState,
   reducers: {
     getFactura: (state, { payload }) => {
-      state.facturaActual = payload;
+      if(Array.isArray(payload)){
+        state.facturaActual = payload;
+        return;
+      }else{
+        state.facturaActual = [payload];
+        return;
+      }
+      
+     
     },
   },
 });

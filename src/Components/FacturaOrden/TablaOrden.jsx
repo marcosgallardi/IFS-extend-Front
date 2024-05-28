@@ -12,7 +12,7 @@ export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
   const { allow } = useSelector((state) => state.allowConciliationSlice);
   const { facturaActual } = useSelector((state) => state.factura);
-
+console.log(facturaActual)
   const dispatch = useDispatch();
 
   const [orden, setOrden] = useState("");
@@ -22,8 +22,6 @@ export const TablaOrden = ({ data }) => {
     INVOICE_NO: facturaActual[0]?.INVOICE_NO,
     IDENTITY: facturaActual[0]?.IDENTITY,
   });
-
-
 
   let headers = [
     "A_Conciliar",
@@ -45,7 +43,7 @@ export const TablaOrden = ({ data }) => {
     "State",
     "Conciliado",
     "Resto_Conciliar",
-    "Total_Con_Descuento",
+    "Total_Con_Descuento", 
   ];
 
   useEffect(() => {
@@ -56,7 +54,7 @@ export const TablaOrden = ({ data }) => {
             await postConciliation(conciliatedValues);
             await dispatch(ordenAction(data[0][10]));
             setConciliatedValues({});
-            dispatch(allowAction(false))
+            dispatch(allowAction(false));
           };
           execute();
         } catch (error) {

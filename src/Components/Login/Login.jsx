@@ -31,7 +31,7 @@ export const Login = () => {
 
   const { username, password, base } = inputLogin;
 
-  console.log(base);
+ 
 
   const onSubmitLogin = async (e) => {
     e.preventDefault();
