@@ -31,8 +31,6 @@ export const Login = () => {
 
   const { username, password, base } = inputLogin;
 
- 
-
   const onSubmitLogin = async (e) => {
     e.preventDefault();
     await logoutUser();
@@ -97,8 +95,7 @@ export const Login = () => {
           value={selectedOption}
           onChange={onChangeBase}
           defaultValue="Base"
-          className={styles.selectBase}
-          >
+          className={styles.selectBase}>
           <option disabled>Base</option>
           <option value="IFSARG1P">IFS Produccion</option>
           <option value="IFSARG1T">IFS Test</option>

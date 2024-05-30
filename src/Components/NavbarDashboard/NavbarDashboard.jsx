@@ -10,6 +10,7 @@ import { allowAction } from "../../Redux/actions/allowAction";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../Helpers/logoutUser";
 import { getFactura } from "../../Redux/slices/facturaSlice";
+import Swal from "sweetalert2";
 
 export const NavbarDashboard = ({ close, factRender }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,6 @@ export const NavbarDashboard = ({ close, factRender }) => {
   const [inputFact, setInputFact] = useState(initialState);
 
   const [openModal, setOpenModal] = useState("#exampleModal123");
-  console.log(openModal);
 
   const navigate = useNavigate();
 
@@ -41,6 +41,16 @@ export const NavbarDashboard = ({ close, factRender }) => {
     e.preventDefault();
     try {
       let data = await dispatch(facturaAction(inputFact));
+
+      if (data.GROSS_AMOUNT === 0) {
+        Swal.fire({
+          icon: "warning",
+          title: "Factura conciliada",
+          text: "La factura que estas buscando ya fue conciliada!",
+
+          confirmButtonColor: "#0c3e62",
+        });
+      }
       if (data === "Faltan datos") return alert("Faltan datos");
       if (data.length === 0) return alert("datos incorrecto");
       if (data.length === 1) {

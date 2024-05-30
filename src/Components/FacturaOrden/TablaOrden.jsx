@@ -12,7 +12,7 @@ export const TablaOrden = ({ data }) => {
   let { isCollapse } = useSelector((state) => state.sidebar);
   const { allow } = useSelector((state) => state.allowConciliationSlice);
   const { facturaActual } = useSelector((state) => state.factura);
-console.log(facturaActual)
+
   const dispatch = useDispatch();
 
   const [orden, setOrden] = useState("");
@@ -43,7 +43,7 @@ console.log(facturaActual)
     "State",
     "Conciliado",
     "Resto_Conciliar",
-    "Total_Con_Descuento", 
+    "Total_Con_Descuento",
   ];
 
   useEffect(() => {
@@ -79,7 +79,17 @@ console.log(facturaActual)
 
   const onChangeConciliar = (e, rowIndex, lineValue) => {
     let { value, name } = e.target;
-
+    console.log(facturaActual[0]);
+    if (facturaActual[0].GROSS_AMOUNT < value) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalido",
+        text: "El valor ingresado es mayor al valor de la factura a conciliar",
+        footer: `Esta intentando ingresar $ ${value} y el monto de la factura es de $ ${facturaActual[0].GROSS_AMOUNT}`,
+        confirmButtonColor: "#0c3e62",
+      });
+      return;
+    }
     if (value > lineValue[16]) {
       Swal.fire({
         icon: "error",
@@ -199,8 +209,23 @@ console.log(facturaActual)
                             type="number"
                             name={orden[rowIndex]}
                             value={conciliatedValues[rowIndex]?.value || ""}
-                            onChange={(e) => onChangeConciliar(e, rowIndex)}
+                            onChange={(e) =>
+                              onChangeConciliar(e, rowIndex, orden[rowIndex])
+                            }
                             className={style.inputStylesNone}
+                          />
+                        </td>
+                        <td>
+                          <button
+                            className={style.buttonObs}
+                            data-bs-toggle="modal"
+                            data-bs-target={`#exampleModal2${rowIndex}`}
+                            data-bs-whatever="@getbootstrap">
+                            Nota
+                          </button>
+                          <ObservationMod
+                            id={rowIndex}
+                            name={orden[rowIndex]}
                           />
                         </td>
                         {row.map((cell, cellIndex) => (
