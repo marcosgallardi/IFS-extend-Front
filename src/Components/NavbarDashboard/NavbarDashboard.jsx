@@ -37,9 +37,25 @@ export const NavbarDashboard = ({ close, factRender }) => {
     });
   };
 
+  console.log(inputFact, initialState);
   const onSubmitFact = async (e) => {
     e.preventDefault();
     try {
+      if (
+        inputFact.series_id === "" &&
+        inputFact.invoice_no === "" &&
+        inputFact.identity === "" &&
+        inputFact.name === ""
+      ) {
+        return Swal.fire({
+          icon: "warning",
+          title: "Campos vacios",
+          text: "Ingresa datos en los distintos campos",
+
+          confirmButtonColor: "#0c3e62",
+        });
+      }
+
       let data = await dispatch(facturaAction(inputFact));
 
       if (data.GROSS_AMOUNT === 0) {
@@ -51,7 +67,14 @@ export const NavbarDashboard = ({ close, factRender }) => {
           confirmButtonColor: "#0c3e62",
         });
       }
-      if (data === "Faltan datos") return alert("Faltan datos");
+      if (data === "Faltan datos")
+        return Swal.fire({
+          icon: "warning",
+          title: "No hay datos",
+          text: "No se encontro nada con los datos proporcionados",
+
+          confirmButtonColor: "#0c3e62",
+        });
       if (data.length === 0) return alert("datos incorrecto");
       if (data.length === 1) {
         await dispatch(ordenAction(data[0].IDENTITY));
