@@ -22,8 +22,6 @@ export const Factura = () => {
   const [factura, setFactura] = useState(false);
   const { facturaActual } = useSelector((state) => state.factura);
 
-  
-
   useEffect(() => {
     setFactura(
       facturaActual && facturaActual.length <= 1 ? facturaActual : initialState
@@ -80,7 +78,7 @@ export const Factura = () => {
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].INVOICE_TYPE : ""}
-                name={"Invoice type"}
+                name={"Tipo factura"}
               />
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
@@ -100,13 +98,13 @@ export const Factura = () => {
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].GROSS_AMOUNT : ""}
-                name={"Con Imp bruto"}
+                name={"Bruto"}
               />
             </div>
             <div className="col-4 d-flex align-items-center justify-content-center">
               <Item
                 valor={factura && factura[0] ? factura[0].NET_CURR_AMOUNT : ""}
-                name={"Con Imp neto"}
+                name={"Neto"}
               />
             </div>
 

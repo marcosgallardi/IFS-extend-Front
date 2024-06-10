@@ -17,6 +17,8 @@ export const TablaOrden = ({ data }) => {
 
   const [orden, setOrden] = useState("");
 
+  console.log(orden,"acaaaa!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
   const [conciliatedValues, setConciliatedValues] = useState({
     SERIES_ID: facturaActual[0]?.SERIES_ID,
     INVOICE_NO: facturaActual[0]?.INVOICE_NO,
@@ -40,6 +42,7 @@ export const TablaOrden = ({ data }) => {
     "line_item_no",
     "",
     "Dates",
+    "Divisa",
     "State",
     "Conciliado",
     "Resto_Conciliar",
