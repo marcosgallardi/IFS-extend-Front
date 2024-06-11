@@ -17,7 +17,7 @@ export const TablaOrden = ({ data }) => {
 
   const [orden, setOrden] = useState("");
 
-  console.log(orden,"acaaaa!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+ 
 
   const [conciliatedValues, setConciliatedValues] = useState({
     SERIES_ID: facturaActual[0]?.SERIES_ID,
@@ -82,7 +82,18 @@ export const TablaOrden = ({ data }) => {
 
   const onChangeConciliar = (e, rowIndex, lineValue) => {
     let { value, name } = e.target;
-    console.log(facturaActual[0]);
+    console.log(lineValue[14], facturaActual[0].CURRENCY, "darosssssss");
+    if (lineValue[14] !== facturaActual[0].CURRENCY) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalido",
+        text: "Error en divisa",
+        footer: `La divisa de la linea seleccionada no coincide con la de la factura`,
+        confirmButtonColor: "#0c3e62",
+      });
+
+      return;
+    }
     if (facturaActual[0].GROSS_AMOUNT < value) {
       Swal.fire({
         icon: "error",
@@ -93,12 +104,12 @@ export const TablaOrden = ({ data }) => {
       });
       return;
     }
-    if (value > lineValue[16]) {
+    if (value > lineValue[17]) {
       Swal.fire({
         icon: "error",
         title: "Invalido",
         text: "El valor ingresado es mayor al valor del monto a conciliar",
-        footer: `Esta intentando ingresar $ ${value} y el monto a conciliar es de $ ${lineValue[16]}`,
+        footer: `Esta intentando ingresar $ ${value} y el monto a conciliar es de $ ${lineValue[17]}`,
         confirmButtonColor: "#0c3e62",
       });
       return;

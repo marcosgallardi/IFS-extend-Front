@@ -9,17 +9,43 @@ export const FacturaOrden = () => {
   let { orden } = useSelector((state) => state.orden);
   const dispatch = useDispatch();
 
-  const [ordenNo, setOrdenNo] = useState("");
+  console.log(orden)
 
-  const onHandleChangeOrden = ({ target }) => {
-    setOrdenNo(target.value);
+  const [ordenNo, setOrdenNo] = useState({
+    norder: 0,
+    divisa: "",
+  });
+
+  const onHandleChangeOrden = ({ target, name }) => {
+    setOrdenNo({
+      ...ordenNo,
+      [target.name]: target.value,
+    });
   };
 
-  const orderFilter = orden?.filter((orden) => orden.ORDER_NO === ordenNo);
+  const orderFilter = orden?.filter(
+    (orden) => orden.ORDER_NO === ordenNo.norder
+  );
+
+  const divisaFilter = orden?.filter(
+    (orden) => orden.CURRENCY === ordenNo.divisa
+  );
 
   const onSubmitOrden = (e) => {
     e.preventDefault();
-    dispatch(filterOrden(orderFilter));
+    if (ordenNo.norder !== "") {
+      dispatch(filterOrden(orderFilter));
+      return setOrdenNo({
+        norder: "",
+        divisa: "",
+      });
+    } else if (ordenNo.divisa !== "") {
+      dispatch(filterOrden(divisaFilter));
+      return setOrdenNo({
+        norder: "",
+        divisa: "",
+      });
+    }
   };
 
   return (
@@ -59,12 +85,30 @@ export const FacturaOrden = () => {
                   aria-label="Close"></button>
               </div>
               <div className="modal-body">
-                <label htmlFor="">Orden No</label>
-                <input
-                  type="number"
-                  value={ordenNo}
-                  onChange={onHandleChangeOrden}
-                />
+                <div className={style.formsFilter}>
+                  <label htmlFor="" className="fs-6 fw-bold">
+                    N° Orden:{" "}
+                  </label>
+
+                  <input
+                    type="number"
+                    name="norder"
+                    className={style.inputLogin}
+                    value={ordenNo.norder}
+                    onChange={onHandleChangeOrden}
+                  />
+                  <label htmlFor="" className="fs-6 fw-bold">
+                    Divisa{" "}
+                  </label>
+
+                  <input
+                    type="text"
+                    name="divisa"
+                    value={ordenNo.divisa}
+                    className={style.inputLogin}
+                    onChange={onHandleChangeOrden}
+                  />
+                </div>
               </div>
               <div className="modal-footer">
                 <button
