@@ -1,6 +1,7 @@
 {
   "name": "vite-project",
   "private": true,
+  "homepage": "http://ifs-extend.sanmartinar.com.ar/ifs-extend",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

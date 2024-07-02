@@ -4,12 +4,13 @@ import { Factura } from "./Factura";
 import { Orden } from "./Orden";
 import { useState } from "react";
 import { filterOrden } from "../../Redux/actions/filterOrdenSlice";
+import { ordenAction } from "../../Redux/actions/ordenAction";
+import Swal from "sweetalert2";
 
 export const FacturaOrden = () => {
   let { orden } = useSelector((state) => state.orden);
+  const { facturaActual } = useSelector((state) => state.factura);
   const dispatch = useDispatch();
-
-  console.log(orden)
 
   const [ordenNo, setOrdenNo] = useState({
     norder: 0,
@@ -27,24 +28,58 @@ export const FacturaOrden = () => {
     (orden) => orden.ORDER_NO === ordenNo.norder
   );
 
+  console.log(orderFilter);
+
   const divisaFilter = orden?.filter(
-    (orden) => orden.CURRENCY === ordenNo.divisa
+    (orden) => orden.CURRENCY === ordenNo.divisa.toUpperCase()
   );
 
-  const onSubmitOrden = (e) => {
+  const handleResetFilters = async () => {
+    dispatch(await ordenAction(facturaActual[0].IDENTITY));
+  };
+
+  const onSubmitOrden = async (e) => {
     e.preventDefault();
     if (ordenNo.norder !== "") {
-      dispatch(filterOrden(orderFilter));
-      return setOrdenNo({
-        norder: "",
-        divisa: "",
-      });
+      if (orderFilter.length === 0) {
+        Swal.fire({
+          icon: "warning",
+          title: "No hay datos",
+          text: "No se encontro nada con los datos proporcionados",
+
+          confirmButtonColor: "#0c3e62",
+        });
+        setOrdenNo({
+          norder: "",
+          divisa: "",
+        });
+      } else {
+        dispatch(await filterOrden(orderFilter));
+        return setOrdenNo({
+          norder: "",
+          divisa: "",
+        });
+      }
     } else if (ordenNo.divisa !== "") {
-      dispatch(filterOrden(divisaFilter));
-      return setOrdenNo({
-        norder: "",
-        divisa: "",
-      });
+      if (divisaFilter.length === 0) {
+        Swal.fire({
+          icon: "warning",
+          title: "No hay datos",
+          text: "No se encontro nada con los datos proporcionados",
+
+          confirmButtonColor: "#0c3e62",
+        });
+        setOrdenNo({
+          norder: "",
+          divisa: "",
+        });
+      } else {
+        dispatch(await filterOrden(divisaFilter));
+        return setOrdenNo({
+          norder: "",
+          divisa: "",
+        });
+      }
     }
   };
 
@@ -57,12 +92,20 @@ export const FacturaOrden = () => {
       <div className={style.containerFact2}>
         <h3 className="pt-2">Ordenes de ventas:</h3>
         {orden && (
-          <button
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal11"
-            className={style.buttonSelect}>
-            Filtrar Ordenes
-          </button>
+          <>
+            <button
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal11"
+              className={style.buttonSelect}>
+              Filtrar Ordenes
+            </button>
+            <br />
+            <button
+              className={style.buttonSelect2}
+              onClick={handleResetFilters}>
+              Resetear filtros
+            </button>
+          </>
         )}
         <div
           className="modal fade"

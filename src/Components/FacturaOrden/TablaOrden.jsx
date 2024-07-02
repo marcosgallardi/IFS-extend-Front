@@ -17,8 +17,6 @@ export const TablaOrden = ({ data }) => {
 
   const [orden, setOrden] = useState("");
 
- 
-
   const [conciliatedValues, setConciliatedValues] = useState({
     SERIES_ID: facturaActual[0]?.SERIES_ID,
     INVOICE_NO: facturaActual[0]?.INVOICE_NO,
@@ -28,25 +26,25 @@ export const TablaOrden = ({ data }) => {
   let headers = [
     "A_Conciliar",
     "Observaciones",
-    "Order_no",
-    "Line_no",
-    "Rel_no",
-    "Catalog_no",
-    "Contracto",
-    "Part_no",
-    "Buy_qty_due",
-    "Sales_unit_meas",
-    "Sale_unit_price",
-    "Discount",
-    "Customer_no",
-    "line_item_no",
+    "Orden",
+    "N_Linea",
+    "N_Lanz",
+    "Art_venta",
+    "Planta",
+    "Art_inv",
+    "cantidad",
+    "Unidad Medida",
+    "Precio",
+    "Descuento",
+    "N_Cliente",
+    "N_Item",
     "",
-    "Dates",
+    "Fecha",
     "Divisa",
-    "State",
+    "Estado",
     "Conciliado",
-    "Resto_Conciliar",
-    "Total_Con_Descuento",
+    "Resto Conciliar",
+    "Total Con Descuento",
   ];
 
   useEffect(() => {
@@ -157,7 +155,7 @@ export const TablaOrden = ({ data }) => {
           {orden && !isCollapse ? (
             <div className={style.tableContainer}>
               <table className={style.excelTable}>
-                <thead>
+                <thead className={style.headerFixed}>
                   <tr>
                     {headers.map((header, index) => (
                       <th key={index} className="fs-6 ">
@@ -208,7 +206,7 @@ export const TablaOrden = ({ data }) => {
                 <thead>
                   <tr>
                     {headers.map((header, index) => (
-                      <th key={index} className="fs-6 ">
+                      <th key={index} className="fs-6">
                         {header}
                       </th>
                     ))}

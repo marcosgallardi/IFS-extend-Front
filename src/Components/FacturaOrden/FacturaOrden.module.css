@@ -97,6 +97,10 @@
 
 .excelTable th {
   background-color: #f2f2f2;
+  position: sticky;
+
+  top: 0;
+  z-index: 1;
 }
 
 .containerMessageOrder {
@@ -113,15 +117,11 @@
 
 .inputStylesNone {
   border: none;
-
   border-radius: 0;
   width: 60px;
   padding: 0;
-
   outline: none;
-
   text-align: center;
-
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -135,10 +135,10 @@
   cursor: pointer;
   font-size: 12px;
   text-align: center;
-
   padding: 10px 15px;
   transition: background-color 0.2s;
 }
+
 .positionTextNoSearch {
   padding-top: 5rem;
   padding-left: 3rem;
@@ -156,6 +156,7 @@
   padding: 10px 15px;
   transition: background-color 0.2s;
 }
+
 .buttonSelect1 {
   background-color: #0c3e62;
   border: none;
@@ -164,7 +165,19 @@
   cursor: pointer;
   font-size: 18px;
   text-align: center;
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+}
 
+.buttonSelect2 {
+  background-color: #0c3e62;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  margin-left: 5rem;
   padding: 10px 15px;
   transition: background-color 0.2s;
 }
@@ -172,6 +185,7 @@
 .buttonSelect:hover {
   background-color: #0c3e62c2;
 }
+
 .buttonSelect1:hover {
   background-color: #0c3e62c2;
 }
@@ -193,6 +207,7 @@
   outline: none;
   transition: border-color 0.2s;
 }
+
 .inputLogin:focus {
   border-color: #0c3e62;
 }
