@@ -29,6 +29,10 @@ export const TablaOrden = ({ data }) => {
     "Orden",
     "N_Linea",
     "N_Lanz",
+    "Conciliado",
+    "Resto Conciliar",
+    "Total Con Descuento",
+    "Divisa",
     "Art_venta",
     "Planta",
     "Art_inv",
@@ -40,11 +44,8 @@ export const TablaOrden = ({ data }) => {
     "N_Item",
     "",
     "Fecha",
-    "Divisa",
+    
     "Estado",
-    "Conciliado",
-    "Resto Conciliar",
-    "Total Con Descuento",
   ];
 
   useEffect(() => {

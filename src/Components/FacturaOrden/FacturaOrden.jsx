@@ -23,6 +23,7 @@ export const FacturaOrden = () => {
       [target.name]: target.value,
     });
   };
+  console.log(orden);
 
   const orderFilter = orden?.filter(
     (orden) => orden.ORDER_NO === ordenNo.norder
